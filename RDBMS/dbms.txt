@@ -1,0 +1,316 @@
+                                RDBMS DAY1
+
+college table:
+
+create table college(reg_id integer,name varchar(50),city varchar(20),l_id integer);
+
+insert into college(reg_id,name,city,l_id) values(101,"name1","bangalore",1);
+insert into college(reg_id,name,city,l_id) values(102,"name2","bangalore",2);
+insert into college(reg_id,name,city,l_id) values(103,"name3","bangalore",3);
+insert into college(reg_id,name,city,l_id) values(105,"name4","bangalore",5);
+insert into college(reg_id,name,city,l_id) values(106,"name5","bangalore",4);
+
+select * from college;
+
+output:
+
+reg_id	name	city	l_id
+101	name1	bangalore	1
+102	name2	bangalore	2
+103	name3	bangalore	3
+105	name4	bangalore	5
+106	name5	bangalore	4
+
+laptop table:
+
+create table laptop1(id integer,name varchar(20));
+insert into laptop1(id,name) values(1,"lap1");
+insert into laptop1(id,name) values(3,"lap3");
+insert into laptop1(id,name) values(4,"lap2");
+
+select * from laptop1;
+
+output:
+
+id	name
+1	lap1
+3	lap3
+4	lap2
+
+
+joins:
+
+inner join:
+
+select * from college inner join laptop1 where college.l_id=laptop1.id;
+
+output:
+reg_id	name	city	       l_id	id	name
+101	name1	bangalore	1	1	lap1
+103	name3	bangalore	3	3	lap3
+106	name5	bangalore	4	4	lap2
+
+left join:
+
+select * from college left join laptop1 on college.l_id=laptop1.id;
+ 
+reg_id	name	city	      l_id	id	name
+101	name1	bangalore	1	1	lap1
+102	name2	bangalore	2	NULL	NULL
+103	name3	bangalore	3	3	lap3
+105	name4	bangalore	5	NULL	NULL
+106	name5	bangalore	4	4	lap2
+
+right join:
+
+select * from college right join laptop1 on college.l_id=laptop1.id;
+
+output:
+
+reg_id	name	city	      l_id	id	name
+101	name1	bangalore	1	1	lap1
+103	name3	bangalore	3	3	lap3
+106	name5	bangalore	4	4	lap2
+
+cross join:
+
+select * from college cross join laptop1 
+
+output:
+
+reg_id	name	city	      l_id	id	name
+101	name1	bangalore	1	4	lap2
+101	name1	bangalore	1	3	lap3
+101	name1	bangalore	1	1	lap1
+102	name2	bangalore	2	4	lap2
+102	name2	bangalore	2	3	lap3
+102	name2	bangalore	2	1	lap1
+103	name3	bangalore	3	4	lap2
+103	name3	bangalore	3	3	lap3
+103	name3	bangalore	3	1	lap1
+105	name4	bangalore	5	4	lap2
+105	name4	bangalore	5	3	lap3
+105	name4	bangalore	5	1	lap1
+106	name5	bangalore	4	4	lap2
+106	name5	bangalore	4	3	lap3
+106	name5	bangalore	4	1	lap1
+
+
+create:
+
+create table college1(id integer,name varchar(20),city varchar(20));
+
+insert:
+
+insert into college1(id,name,city) values(101,"name1","bangalore");
+insert into college1(id,name,city) values(106,"name2","nellore");
+insert into college1(id,name,city) values(102,"name3","kochi");
+insert into college1(id,name,city) values(103,"name4","chennai");
+insert into college1(id,name,city) values(104,"name5","hyderabad");
+insert into college1(id,name,city) values(105,"name6","guntur");
+insert into college1(id,name,city) values(103,"name12","guragon");
+insert into college1(id,name,city) values(104,"name10","vijayawada");
+insert into college1(id,name,city) values(105,"name7","bangalore");
+
+from clause:
+
+select * from college1;
+output:
+id	name	city
+101	name1	bangalore
+106	name2	nellore
+102	name3	kochi
+103	name4	chennai
+104	name5	hyderabad
+105	name6	guntur
+103	name12	guragon
+104	name10	vijayawada
+105	name7	bangalore
+
+where clause:
+
+select * from college1 where city="bangalore";
+
+output:
+id	name	city
+101	name1	bangalore
+105	name7	bangalore
+
+group by:
+
+select count(*) from college1 group by name ;
+
+output:
+count(*)
+2
+1
+1
+1
+1
+1
+1
+1
+
+order by:
+select * from college1 order by id asc ;
+
+output:
+id	name	city
+101	name1	bangalore
+102	name3	kochi
+103	name4	chennai
+103	name12	guragon
+104	name5	hyderabad
+104	name10	vijayawada
+105	name6	guntur
+105	name7	bangalore
+106	name2	nellore
+
+distinct:
+
+select distinct id from college1  ;
+
+output:
+id
+101
+106
+102
+103
+104
+105
+
+count:
+
+select count(*) from college1  ;
+output:
+count(*)
+9
+
+sum:
+
+select sum(id) as total from college1  ;
+total
+933
+
+avg:
+
+select avg(id) as aerage from college1  ;
+output:
+average
+103.6667
+
+min:
+
+select min(id) as minimum from college1  ;
+
+output:
+minimum
+101
+
+max:
+
+select max(id) as maximum from college1  ;
+
+output:
+maximum
+106
+ 
+AND:
+
+select * from college1 where name="name5" and city="hyderabad";
+
+output:
+id	name	city
+104	name5	hyderabad
+
+OR:
+
+select * from college1 where name="name3" or city="hyderabad"  ;
+
+output:
+
+id	name	city
+102	name3	kochi
+104	name5	hyderabad
+
+in:
+
+select * from college1 where city in ("kochi","bangalore") ;
+
+output:
+id	name	city
+101	name1	bangalore
+102	name3	kochi
+105	name7	bangalore
+
+like:
+
+select * from college1 where city like '%i' ;
+
+output:
+id	name	city
+102	name3	kochi
+103	name4	chennai
+
+select * from college1 where city like 'g%' ;
+output:
+id	name	city
+105	name6	guntur
+103	name12	guragon
+
+select * from college1 where city like '____i' ;
+
+output:
+id	name	city
+102	name3	kochi
+
+between and:
+
+select * from college1 where id between 101 and 105 ;
+
+output:
+id	name	city
+101	name1	bangalore
+102	name3	kochi
+103	name4	chennai
+104	name5	hyderabad
+105	name6	guntur
+103	name12	guragon
+104	name10	vijayawada
+105	name7	bangalore
+
+is null:
+
+select * from college1 where name is null;
+
+output:
+
+is not null:
+
+select * from college1 where name is  not null;
+
+output:
+id	name	city
+101	name1	bangalore
+106	name2	nellore
+102	name3	kochi
+103	name4	chennai
+104	name5	hyderabad
+105	name6	guntur
+103	name12	guragon
+104	name10	vijayawada
+105	name7	bangalore
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,77 @@
+                                              Rdbms Day4
+
+
+Difference between mysql and mongodb:
+
+
+S.No.		Key		MySQL					MongoDB
+
+1	Owned/Developed By	MySQL is owned by Oracle.		MongoDB is developed by MongoDB Inc.
+
+2	Data Storage	        MySql stores data in tabular		MongoDB stores records as documents.
+                                format as records in table.
+
+3	Language		SQL, Structured Query Language		Dynamic Schema. Predefined structure
+				is used to query database.		is defined for incoming data.
+
+4	Design Objectives	No efficient replication and 		High availability, Scalability, Replication 
+				Sharding available.			 and Sharding are inbuilt.
+
+5	Terms			MySQL uses Table, Row, 			MongoDB uses Collection, Document, Field,
+				columns,joins etc.			Embedded Document, Linking etc.
+				
+
+6	Data Storage		MySQL stores data in forms 		MongoDB stores data in form of JSON like documents.
+				of records in table.
+
+
+Advantages of MongoDB:
+
+1)Speed & Efficiency. 
+The ability to manage huge unstructured data is a key advantage MongoDB has over MySQL. ...
+
+2)Replication.
+ MongoDB is just supporting master-slave replication. To make multiple copies of the data, it utilizes replica sets.
+
+3)Flexibility of Schema. 
+The fact that there are no limitations on schema design is the greatest advantage to MongoDB. ...
+
+4)Querying Language. 
+The unstructured query language is used by MongoDB. To create a query in JSON documents, you need to define a document with a property that you want the ...
+
+5)Sharding. 
+MongoDB sharding has the potential to divide a collection into sub-sets of data to store them through several shards.
+
+6)Relationships. 
+MongoDB does not support JOIN. On the other hand, multi-dimensional forms of data such as arrays and even other documents are supported by MongoDB.
+
+7)Security.
+ MongoDB makes use of role-based access control with a versatile range of privileges. Authentication, auditing, 
+and authorization are among the security features in this database.
+
+
+use case:
+
+1) single view:
+A Single View application aggregates data from multiple sources into a central repository to create a single view of anything.
+
+2)payments:
+
+As payment platforms compete to outscale the competition, it’s crucial they also offer a flexible, real-time, and enriched customer experience.
+From consumer brands to corporations, industry leaders choose MongoDB to form the backbone of their always on, always secure, always available payments platform.
+
+3)content management:
+MongoDB can incorporate any type of data, no matter what it looks like or where it comes from, while providing all the features needed to build content-rich apps.
+
+4)catalog:
+
+Customers want your business on their smartphone. And they expect it to get better weekly. Too bad your RDBMS makes it hard to iterate constantly.
+ And it wasn’t built to support millions of users, either.With MongoDB, you can build killer mobile apps that scale to millions of users. Faster. With less money.
+
+
+
+
+	 
+									
+
+				

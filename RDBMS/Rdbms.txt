@@ -1,0 +1,467 @@
+                                                RDBMS DAY2
+SELECT * FROM <tableName>
+
+
+
+----------------------------------------
+mysql> show databases;
+mysql> show schemas;
+
+
+
+mysql> create database Batch98;
+
+
+
+mysql> use Batch98;
+
+
+
+mysql> create table login (email VARCHAR(25), password VARCHAR(10));
+
+
+
+mysql> desc login;
+
+
+
+mysql> INSERT INTO login VALUES('abc@gmail.com', 'root');
+
+Consider the following table STUDENT.
+
+Students
+
+REGD.NO NAME BRANCH
+
+0001 Ram CSE
+
+0002 Hari MECH
+
+0003 Pradeep EEE
+
+0004 Deepak ETC
+
+1. Write down the SQL command which will show the Regd. No of Pradeep.
+
+2. Write down the SQL command which will show the Name and Branch column.
+
+3. Write a SQL command which will count the number of rows existing in STUDENT table.
+
+4. I want to add another column in the STUDENT table as ”address”. How can I do that?
+
+
+#INSERT INTO batch98.student VALUES( 1, 'Ram','CSE');
+#INSERT INTO batch98.student VALUES( 2, 'Hari','MECH');
+#INSERT INTO batch98.student VALUES( 3,'Pradeep','EEE');
+#INSERT INTO batch98.student VALUES( 4,'Deepak','ETC');
+
+select * from batch98.student;
+#1. Write down the SQL command which will show the Regd. No of Pradeep.
+#select  regd_no from batch98.student where name='Pradeep';
+#2. Write down the SQL command which will show the Name and Branch column.
+#select name,branch from batch98.student;
+#3. Write a SQL command which will count the number of rows existing in STUDENT table.
+#select  count(*) from batch98.student;
+#4. I want to add another column in the STUDENT table as ”address”. How can I do that?
+#alter table batch98.student add year int;
+alter table batch98.student add address varchar(20);
+
+EMPLOYEE2 TABLE:
+
+mysql> SELECT* FROM EMPLOYEE2;
++-------+-------+----------+------------+------+------+------+--------+
+| EMPNO | ENAME | JOB      | HIRE_DATE  | MGR  | SAL  | COMM | DEPTNO |
++-------+-------+----------+------------+------+------+------+--------+
+|  7369 | SMITH | CLERK    | 2017-12-17 | 7902 |  800 | NULL |     20 |
+|  7499 | ALLEN | SALESMAN | 2020-02-18 | 7698 | 1600 |  300 |     30 |
+|  7521 | WARD  | SALESMAN | 2022-02-18 | 7698 | 1250 |  500 |     30 |
++-------+-------+----------+------------+------+------+------+--------+
+3 rows in set (0.00 sec)
+
+mysql> INSERT INTO EMPLOYEE(EMPNO,ENAME,JOB,HIRE_DATE,MGR,SAL,DEPTNO) VALUES (7566,'JONES','MANAGER','2002-04-18',7839,2975,20);
+ERROR 1062 (23000): Duplicate entry '7566' for key 'employee.PRIMARY'
+mysql> SELECT* FROM EMPLOYEE2;
++-------+-------+----------+------------+------+------+------+--------+
+| EMPNO | ENAME | JOB      | HIRE_DATE  | MGR  | SAL  | COMM | DEPTNO |
++-------+-------+----------+------------+------+------+------+--------+
+|  7369 | SMITH | CLERK    | 2017-12-17 | 7902 |  800 | NULL |     20 |
+|  7499 | ALLEN | SALESMAN | 2020-02-18 | 7698 | 1600 |  300 |     30 |
+|  7521 | WARD  | SALESMAN | 2022-02-18 | 7698 | 1250 |  500 |     30 |
++-------+-------+----------+------------+------+------+------+--------+
+3 rows in set (0.00 sec)
+
+mysql> INSERT INTO EMPLOYEE2(EMPNO,ENAME,JOB,HIRE_DATE,MGR,SAL,DEPTNO) VALUES (7566,'JONES','MANAGER','2002-04-18',7839,2975,20);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> SELECT* FROM EMPLOYEE2;
++-------+-------+----------+------------+------+------+------+--------+
+| EMPNO | ENAME | JOB      | HIRE_DATE  | MGR  | SAL  | COMM | DEPTNO |
++-------+-------+----------+------------+------+------+------+--------+
+|  7369 | SMITH | CLERK    | 2017-12-17 | 7902 |  800 | NULL |     20 |
+|  7499 | ALLEN | SALESMAN | 2020-02-18 | 7698 | 1600 |  300 |     30 |
+|  7521 | WARD  | SALESMAN | 2022-02-18 | 7698 | 1250 |  500 |     30 |
+|  7566 | JONES | MANAGER  | 2002-04-18 | 7839 | 2975 | NULL |     20 |
++-------+-------+----------+------------+------+------+------+--------+
+4 rows in set (0.00 sec)
+
+mysql> INSERT INTO EMPLOYEE2 VALUES (7654,'MARTIN','SALESMAN','2028-09-18',7698,1250,1400,30);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO EMPLOYEE2(EMPNO,ENAME,JOB,HIRE_DATE,MGR,SAL,DEPTNO) VALUE(7698,'BLAKE','MANAGER','2001-05-18',7839,2850,30);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO EMPLOYEE2(EMPNO,ENAME,JOB,HIRE_DATE,MGR,SAL,DEPTNO) VALUE(7782,'CLARK','MANAGER','2009-06-18',7839,2450,10);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO EMPLOYEE2(EMPNO,ENAME,JOB,HIRE_DATE,MGR,SAL,DEPTNO) VALUE(7788,'SCOTT','ANALYST','2019-04-17',7566,3000,20);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO EMPLOYEE2(EMPNO,ENAME,JOB,HIRE_DATE,SAL,DEPTNO) VALUE(7839,'KING','PRESIDENT','2017-11-18',5000,10);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO EMPLOYEE2 VALUES (7844,'TURNER','SALESMAN','2008-09-18',7698,1500,0,30);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO EMPLOYEE2(EMPNO,ENAME,JOB,HIRE_DATE,MGR,SAL,DEPTNO) VALUE(7876,'ADAMS','CLERK','2023-05-17',7788,1100,20);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO EMPLOYEE2(EMPNO,ENAME,JOB,HIRE_DATE,MGR,SAL,DEPTNO) VALUE(7900,'JAMES','CLERK','2003-12-18',7698,950,30);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO EMPLOYEE2(EMPNO,ENAME,JOB,HIRE_DATE,MGR,SAL,DEPTNO) VALUE(7902,'FORD','ANALYST','2003-12-18',7566,3000,20);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO EMPLOYEE2(EMPNO,ENAME,JOB,HIRE_DATE,MGR,SAL,DEPTNO) VALUE(7934,'MILLER','CLERK','2023-01-28',77826,1300,10);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> SELECT * FROM EMPLOYEE2;
++-------+--------+-----------+------------+-------+------+------+--------+
+| EMPNO | ENAME  | JOB       | HIRE_DATE  | MGR   | SAL  | COMM | DEPTNO |
++-------+--------+-----------+------------+-------+------+------+--------+
+|  7369 | SMITH  | CLERK     | 2017-12-17 |  7902 |  800 | NULL |     20 |
+|  7499 | ALLEN  | SALESMAN  | 2020-02-18 |  7698 | 1600 |  300 |     30 |
+|  7521 | WARD   | SALESMAN  | 2022-02-18 |  7698 | 1250 |  500 |     30 |
+|  7566 | JONES  | MANAGER   | 2002-04-18 |  7839 | 2975 | NULL |     20 |
+|  7654 | MARTIN | SALESMAN  | 2028-09-18 |  7698 | 1250 | 1400 |     30 |
+|  7698 | BLAKE  | MANAGER   | 2001-05-18 |  7839 | 2850 | NULL |     30 |
+|  7782 | CLARK  | MANAGER   | 2009-06-18 |  7839 | 2450 | NULL |     10 |
+|  7788 | SCOTT  | ANALYST   | 2019-04-17 |  7566 | 3000 | NULL |     20 |
+|  7839 | KING   | PRESIDENT | 2017-11-18 |  NULL | 5000 | NULL |     10 |
+|  7844 | TURNER | SALESMAN  | 2008-09-18 |  7698 | 1500 |    0 |     30 |
+|  7876 | ADAMS  | CLERK     | 2023-05-17 |  7788 | 1100 | NULL |     20 |
+|  7900 | JAMES  | CLERK     | 2003-12-18 |  7698 |  950 | NULL |     30 |
+|  7902 | FORD   | ANALYST   | 2003-12-18 |  7566 | 3000 | NULL |     20 |
+|  7934 | MILLER | CLERK     | 2023-01-28 | 77826 | 1300 | NULL |     10 |
++-------+--------+-----------+------------+-------+------+------+--------+
+14 rows in set (0.00 sec)
+
+mysql>
+
+EMPLOYEE TABLE:
+
+mysql> create table employee(empno integer primary key,ename varchar(20)not null,job varchar(20),hire_date varchar(25),mgr integer,sal integer,comm integer,deptno integer);
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> desc employee;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| empno     | int         | NO   | PRI | NULL    |       |
+| ename     | varchar(20) | NO   |     | NULL    |       |
+| job       | varchar(20) | YES  |     | NULL    |       |
+| hire_date | varchar(25) | YES  |     | NULL    |       |
+| mgr       | int         | YES  |     | NULL    |       |
+| sal       | int         | YES  |     | NULL    |       |
+| comm      | int         | YES  |     | NULL    |       |
+| deptno    | int         | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+8 rows in set (0.02 sec)
+
+mysql> insert into employee(empno,ename,job,hire_date,mgr,sal,deptno) values(7369,'SMITH','CLERK','17-DEC-80',7902,800,20);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from employee;
++-------+-------+-------+-----------+------+------+------+--------+
+| empno | ename | job   | hire_date | mgr  | sal  | comm | deptno |
++-------+-------+-------+-----------+------+------+------+--------+
+|  7369 | SMITH | CLERK | 17-DEC-80 | 7902 |  800 | NULL |     20 |
++-------+-------+-------+-----------+------+------+------+--------+
+1 row in set (0.00 sec)
+
+mysql> insert into employee values(7499,'ALLEN','SALESMAN','20-FEB-10',7698,1600,300,30);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into employee values(7521,'WARD','SALESMAN','22-FEB-81',7698,1250,500,30);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into employee(empno,ename,job,hire_date,mgr,sal,deptno) values(7566,'JONES','MANAGER','02-APR-81',7839,2975,20);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from employee;
++-------+-------+----------+-----------+------+------+------+--------+
+| empno | ename | job      | hire_date | mgr  | sal  | comm | deptno |
++-------+-------+----------+-----------+------+------+------+--------+
+|  7369 | SMITH | CLERK    | 17-DEC-80 | 7902 |  800 | NULL |     20 |
+|  7499 | ALLEN | SALESMAN | 20-FEB-10 | 7698 | 1600 |  300 |     30 |
+|  7521 | WARD  | SALESMAN | 22-FEB-81 | 7698 | 1250 |  500 |     30 |
+|  7566 | JONES | MANAGER  | 02-APR-81 | 7839 | 2975 | NULL |     20 |
++-------+-------+----------+-----------+------+------+------+--------+
+4 rows in set (0.00 sec)
+
+mysql> insert into employee values(7654,'MARTIN,'SALESMAN','28-SEP-81',7698,1250,1400,30);
+    '> insert into employee values(7654,'MARTIN','SALESMAN','28-SEP-81',7698,1250,1400,30);
+    '> insert into employee values(7654,'MARTIN','SALESMAN','28-SEP-81',7698,1250,1400,30);
+    '> insert into employee values(7654,'MARTIN','SALESMAN','28-SEP-81',7698,1250,1400,30);
+    '> SELECT * FROM EMPLOYEE;
+    '> ^C
+mysql> insert into employee values(7654,'MARTIN','SALESMAN','28-SEP-81',7698,1250,1400,30);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from employee;
++-------+--------+----------+-----------+------+------+------+--------+
+| empno | ename  | job      | hire_date | mgr  | sal  | comm | deptno |
++-------+--------+----------+-----------+------+------+------+--------+
+|  7369 | SMITH  | CLERK    | 17-DEC-80 | 7902 |  800 | NULL |     20 |
+|  7499 | ALLEN  | SALESMAN | 20-FEB-10 | 7698 | 1600 |  300 |     30 |
+|  7521 | WARD   | SALESMAN | 22-FEB-81 | 7698 | 1250 |  500 |     30 |
+|  7566 | JONES  | MANAGER  | 02-APR-81 | 7839 | 2975 | NULL |     20 |
+|  7654 | MARTIN | SALESMAN | 28-SEP-81 | 7698 | 1250 | 1400 |     30 |
++-------+--------+----------+-----------+------+------+------+--------+
+5 rows in set (0.00 sec)
+
+mysql> insert into employee(empno,ename,job,hire_date,mgr,sal,deptno) values(7698,'BLAKE','MANAGER','01-MAY-81',7839,2850,30);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into employee(empno,ename,job,hire_date,mgr,sal,deptno) values(7782,'CLARK','MANAGER','09-JUN-81',7839,2450,10);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from employee;
++-------+--------+----------+-----------+------+------+------+--------+
+| empno | ename  | job      | hire_date | mgr  | sal  | comm | deptno |
++-------+--------+----------+-----------+------+------+------+--------+
+|  7369 | SMITH  | CLERK    | 17-DEC-80 | 7902 |  800 | NULL |     20 |
+|  7499 | ALLEN  | SALESMAN | 20-FEB-10 | 7698 | 1600 |  300 |     30 |
+|  7521 | WARD   | SALESMAN | 22-FEB-81 | 7698 | 1250 |  500 |     30 |
+|  7566 | JONES  | MANAGER  | 02-APR-81 | 7839 | 2975 | NULL |     20 |
+|  7654 | MARTIN | SALESMAN | 28-SEP-81 | 7698 | 1250 | 1400 |     30 |
+|  7698 | BLAKE  | MANAGER  | 01-MAY-81 | 7839 | 2850 | NULL |     30 |
+|  7782 | CLARK  | MANAGER  | 09-JUN-81 | 7839 | 2450 | NULL |     10 |
++-------+--------+----------+-----------+------+------+------+--------+
+7 rows in set (0.00 sec)
+
+mysql> insert into employee(empno,ename,job,hire_date,mgr,sal,deptno) values(7788,'SCOTT','ANALYST','19-APR-87',7566,3000,20);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into employee(empno,ename,job,hire_date,sal,deptno) values(7839,'KING','PRESIDENT','17-NOV-81',5000,10);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from employee;
++-------+--------+-----------+-----------+------+------+------+--------+
+| empno | ename  | job       | hire_date | mgr  | sal  | comm | deptno |
++-------+--------+-----------+-----------+------+------+------+--------+
+|  7369 | SMITH  | CLERK     | 17-DEC-80 | 7902 |  800 | NULL |     20 |
+|  7499 | ALLEN  | SALESMAN  | 20-FEB-10 | 7698 | 1600 |  300 |     30 |
+|  7521 | WARD   | SALESMAN  | 22-FEB-81 | 7698 | 1250 |  500 |     30 |
+|  7566 | JONES  | MANAGER   | 02-APR-81 | 7839 | 2975 | NULL |     20 |
+|  7654 | MARTIN | SALESMAN  | 28-SEP-81 | 7698 | 1250 | 1400 |     30 |
+|  7698 | BLAKE  | MANAGER   | 01-MAY-81 | 7839 | 2850 | NULL |     30 |
+|  7782 | CLARK  | MANAGER   | 09-JUN-81 | 7839 | 2450 | NULL |     10 |
+|  7788 | SCOTT  | ANALYST   | 19-APR-87 | 7566 | 3000 | NULL |     20 |
+|  7839 | KING   | PRESIDENT | 17-NOV-81 | NULL | 5000 | NULL |     10 |
++-------+--------+-----------+-----------+------+------+------+--------+
+9 rows in set (0.00 sec)
+
+mysql> insert into employee values(7844,'TURNER','SALESMAN','08-SEP-81',7698,1500,0,30);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from employee;
++-------+--------+-----------+-----------+------+------+------+--------+
+| empno | ename  | job       | hire_date | mgr  | sal  | comm | deptno |
++-------+--------+-----------+-----------+------+------+------+--------+
+|  7369 | SMITH  | CLERK     | 17-DEC-80 | 7902 |  800 | NULL |     20 |
+|  7499 | ALLEN  | SALESMAN  | 20-FEB-10 | 7698 | 1600 |  300 |     30 |
+|  7521 | WARD   | SALESMAN  | 22-FEB-81 | 7698 | 1250 |  500 |     30 |
+|  7566 | JONES  | MANAGER   | 02-APR-81 | 7839 | 2975 | NULL |     20 |
+|  7654 | MARTIN | SALESMAN  | 28-SEP-81 | 7698 | 1250 | 1400 |     30 |
+|  7698 | BLAKE  | MANAGER   | 01-MAY-81 | 7839 | 2850 | NULL |     30 |
+|  7782 | CLARK  | MANAGER   | 09-JUN-81 | 7839 | 2450 | NULL |     10 |
+|  7788 | SCOTT  | ANALYST   | 19-APR-87 | 7566 | 3000 | NULL |     20 |
+|  7839 | KING   | PRESIDENT | 17-NOV-81 | NULL | 5000 | NULL |     10 |
+|  7844 | TURNER | SALESMAN  | 08-SEP-81 | 7698 | 1500 |    0 |     30 |
++-------+--------+-----------+-----------+------+------+------+--------+
+10 rows in set (0.00 sec)
+
+mysql> insert into employee(empno,ename,job,hire_date,mgr,sal,deptno) values(7876,'ADAMS','CLERK','23-MAY-87',7788,1100,20);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into employee(empno,ename,job,hire_date,mgr,sal,deptno) values(7900,'JAMES','CLERK','03-DEC-81',7698,950,30);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into employee(empno,ename,job,hire_date,mgr,sal,deptno) values(7902,'FORD','ANALYST','03-DEC-81',7566,3000,20);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into employee(empno,ename,job,hire_date,mgr,sal,deptno) values(7934,'MILLER','CLERK','23-JAN-82',7782,1300,10);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from employee;
++-------+--------+-----------+-----------+------+------+------+--------+
+| empno | ename  | job       | hire_date | mgr  | sal  | comm | deptno |
++-------+--------+-----------+-----------+------+------+------+--------+
+|  7369 | SMITH  | CLERK     | 17-DEC-80 | 7902 |  800 | NULL |     20 |
+|  7499 | ALLEN  | SALESMAN  | 20-FEB-10 | 7698 | 1600 |  300 |     30 |
+|  7521 | WARD   | SALESMAN  | 22-FEB-81 | 7698 | 1250 |  500 |     30 |
+|  7566 | JONES  | MANAGER   | 02-APR-81 | 7839 | 2975 | NULL |     20 |
+|  7654 | MARTIN | SALESMAN  | 28-SEP-81 | 7698 | 1250 | 1400 |     30 |
+|  7698 | BLAKE  | MANAGER   | 01-MAY-81 | 7839 | 2850 | NULL |     30 |
+|  7782 | CLARK  | MANAGER   | 09-JUN-81 | 7839 | 2450 | NULL |     10 |
+|  7788 | SCOTT  | ANALYST   | 19-APR-87 | 7566 | 3000 | NULL |     20 |
+|  7839 | KING   | PRESIDENT | 17-NOV-81 | NULL | 5000 | NULL |     10 |
+|  7844 | TURNER | SALESMAN  | 08-SEP-81 | 7698 | 1500 |    0 |     30 |
+|  7876 | ADAMS  | CLERK     | 23-MAY-87 | 7788 | 1100 | NULL |     20 |
+|  7900 | JAMES  | CLERK     | 03-DEC-81 | 7698 |  950 | NULL |     30 |
+|  7902 | FORD   | ANALYST   | 03-DEC-81 | 7566 | 3000 | NULL |     20 |
+|  7934 | MILLER | CLERK     | 23-JAN-82 | 7782 | 1300 | NULL |     10 |
++-------+--------+-----------+-----------+------+------+------+--------+
+14 rows in set (0.00 sec)
+
+mysql>
+                          RDBMS DAY3
+
+
+#SELECT * FROM EMPLOYEE;
+# 1.CREATE EMPLOYEE TABLE.
+#2. Select the employees in department 30.
+#SELECT * FROM EMPLOYEE WHERE DEPTNO=30;
+#3. List the names, numbers and departments of all clerks.
+#SELECT ENAME,EMPNO,DEPTNO FROM EMPLOYEE WHERE JOB='CLERK';
+#4. Find the department numbers and names of employees of all departments with deptno greater than 20.
+#SELECT DEPTNO,ENAME FROM EMPLOYEE WHERE DEPTNO>20;
+#5. Find employees whose commission is greater than their salaries.
+#SELECT * FROM EMPLOYEE WHERE COMM>SAL;
+#6. Find employees whose commission is greater than 60 % of their salaries.
+#SELECT * FROM EMPLOYEE WHERE COMM> (0.06)+SAL;
+#7. List name, job and salary of all employees in department 20 who earn more than 2000/
+#SELECT ENAME,JOB,SAL FROM EMPLOYEE WHERE DEPTNO=20 AND SAL >2000;
+#8. Find all salesmen in department 30 whose salary is greater than 1500/-.
+#SELECT * FROM EMPLOYEE WHERE JOB='SALESMAN' AND DEPTNO=30 AND SAL >1500;
+#9. Find all employees whose designation is either manager or president.
+#SELECT * FROM EMPLOYEE WHERE JOB='MANAGER' OR JOB='PRESIDENT';
+#10. Find all managers who are not in department 30.
+#SELECT * FROM EMPLOYEE WHERE JOB='MANAGER' AND DEPTNO != 30;
+#11. Find all the details of managers and clerks in dept 10.
+#SELECT * FROM EMPLOYEE WHERE JOB IN('MANAGER','CLERK') AND  DEPTNO=10;
+#12. Find the details of all the managers (in any dept) and clerks in dept 20.
+#SELECT * FROM EMPLOYEE WHERE JOB='MANAGER' OR (JOB='CLERK' AND DEPTNO=20);
+#13. Find the details of all the managers in dept. 10 and all clerks in dept 20 and all employees who are neither managers nor clerks but whose salary is more than or equal to 2000/-.
+#SELECT * FROM EMPLOYEE WHERE (JOB='MANAGER' AND DEPTNO=10) OR (JOB='CLERK' AND DEPTNO=20) OR (SAL>=2000 AND JOB <>'MANAGER' AND JOB <>'CLERK');
+#14. Find the names of anyone in dept. 20 who is neither manager nor clerk.
+#SELECT ENAME FROM EMPLOYEE WHERE DEPTNO=20 AND (JOB='MANAGER' OR 'CLERK');
+#15. Find the names of employees who earn between 1200/- and 1400/-.
+#SELECT ENAME FROM EMPLOYEE WHERE SAL BETWEEN 1200 AND 1400;
+#16. Find the employees who are clerks, analysts or salesmen.
+#SELECT * FROM EMPLOYEE WHERE JOB IN ('CLERK','ANALYST','SALESMAN');
+#17. Find the employees who are not clerks, analysts or salesmen.
+#SELECT  * FROM EMPLOYEE WHERE JOB NOT IN('CLERK','ANALYST','SALESMAN');
+#18. Find the employees who do not receive commission.
+#SELECT * FROM EMPLOYEE WHERE COMM IS NULL;
+#19. Find the different jobs of employees receiving commission.
+#SELECT JOB FROM EMPLOYEE WHERE COMM IS NOT NULL;
+#20. Find the employees who do not receive commission or whose commission is less than 100/-
+#SELECT * FROM EMPLOYEE WHERE COMM IS NULL OR COMM<100;
+#21. If all the employees not receiving commission is entitles to a bonus of Rs. 250/- show the net earnings of all the employees.
+#SELECT IF(COMM IS NULL,(SAL+250),(SAL+COMM)) AS TOTALEARNINGS FROM EMPLOYEE;
+#22. Find all the employees whose total earning is greater than 2000/- .
+#SELECT * FROM EMPLOYEE WHERE SAL+ COMM>2000;
+#23. Find all the employees whose name begins or ends with ‘M’
+#SELECT * FROM EMPLOYEE WHERE ENAME LIKE 'M%' OR ENAME LIKE '%M';
+#24. Find all the employees whose names contain the letter ‘M’ in any case.
+#SELECT  * FROM  EMPLOYEE WHERE ENAME LIKE '%M%';
+#25. Find all the employees whose names are upto 15 character long and have letter ‘R’ as 3rd character of their names.
+#SELECT ENAME FROM EMPLOYEE WHERE ENAME LIKE '__R%' AND LENGTH(ENAME)<15;
+#26. Find all the employees who were hired in the month of February (of any year).
+#SELECT * FROM EMPLOYEE WHERE HIRE_DATE LIKE'%FEB%';
+                   (OR)
+select * from batch97.employee WHERE EXTRACT(MONTH FROM HIREDATE) = 2;
+# 27. Find all the employees who were hired on last day of the month.
+#select * from employee WHERE EXTRACT(DAY FROM HIREDATE) = EXTRACT(DAY FROM LAST_DAY(HIREDATE)) ;
+                        (OR)
+# select EXTRACT(DAY FROM HIREDATE) as A, EXTRACT(DAY FROM LAST_DAY(HIREDATE)) as B from employee;
+                        (OR)
+#select * from employee WHERE HIREDATE = LAST_DAY(HIREDATE) ;
+#28. Find all the employees who were hired more than 2 years ago.
+#select * from batch98.employee WHERE DATEDIFF(NOW(), HIREDATE) > 730;
+#29. Find the managers hired in the year 2003.
+#SELECT * FROM batch98.employee WHERE JOB = 'MGR' and EXTRACT(YEAR FROM HIREDATE) = 2003;
+#30. Display the names and jobs of all the employees separated by a space.
+
+#UPDATE BATCH98.EMPLOYEE SET JOB ='SALES MAN',ENAME = 'MARTIN LUTAR' WHERE EMPNO=7654;
+#SELECT * FROM EMPLOYEE WHERE JOB LIKE '% %' AND ENAME LIKE '% %';
+                  (OR)
+#SELECT concat(ENAME,' ', JOB) FROM batch97.employee;
+#31. Display the names of all the employees right aligning them to 15 characters.
+#select CONCAT(ENAME , SPACE(15)) from batch97.employee;
+               (OR)
+#select CONCAT(SPACE(15), ENAME ) from batch97.employee;
+
+#32. Display the names of all the employees padding them to the right up to 15 characters with ‘*’.
+#select rpad(ename,15,'*') from employee;
+          (OR)
+#select CONCAT(ENAME , REPEAT("*", 15)) from batch98.employee;
+#33. Display the names of all the employees without any leading ‘A’.
+#select trim(leading 'A' from ename) from employee;
+       (OR)
+#SELECT ENAME FROM batch98.employee WHERE ENAME NOT LIKE 'A%';
+#34. Display the names of all the employees without any trailing ‘R’.
+#select trim(trailing 'R' from ename) from employee;
+35. Show the first 3 and last 3 characters of the names of all the employees.
+#SELECT SUBSTRING(ENAME,1,3) ,SUBSTRING(ENAME,LENGTH(ENAME)-2,LENGTH(ENAME))FROM EMPLOYEE; 
+#36. Display the names of all the employees replacing ‘A’ with ‘a’.
+#select replace(ename,'A','a') from employee;
+#37. Display the names of all the employees and position where the string ‘AR’ occurs in the name.
+#select instr(ename,'AR') from employee;
+#38. Show the salary of all the employees , rounding it to the nearest Rs. 1000/-.
+#SELECT ENAME,CEILING(SAL/1000)*1000 FROM EMPLOYEE;
+            (OR)
+#SELECT FLOOR(SAL) FROM batch98.employee WHERE floor(sal) = 1000 OR CEIL(sal) = 1000;
+39. Show the salary of all the employees , ignoring the fraction less than Rs. 1000/-.
+#SELECT * FROM employee WHERE FLOOR(SAL) <= 1000;
+#40. Show the names of all the employees and date on which they completed 3 years of service.
+#SELECT ENAME,DATE_ADD(HIRE_DATE,INTERVAL 3 YEAR) FROM EMPLOYEE;
+                (OR)
+#SELECT ENAME,ADDDATE(HIREDATE, INTERVAL 3 YEAR) FROM batch98.employee;
+# 41. For each employee, display the no. of days passed since the employee joined the company.
+#SELECT DATEDIFF(NOW() , HIRE_DATE) AS DAYS FROM employee;
+#42. For each employee, display the no. of months passed since the employee joined the company.
+#SELECT ENAME,PERIOD_DIFF(DATE_FORMAT(NOW(), '%Y%m'),DATE_FORMAT(HIRE_DATE, '%Y%m')) FROM batch98.employee2;
+               (OR)
+#select Ename , round(datediff(NOW(),HIREDATE)/30.41) AS Months from employee
+
+#43. Display the details of all the employees sorted on the names.
+#SELECT * FROM EMPLOYEE ORDER BY ENAME;
+#44. Display the names of the employees, based on the tenure with the oldest employee coming first.
+#SELECT * FROM batch98.employee ORDER BY HIRE_DATE ASC;
+#45. Display the names, jobs and salaries of employees, sorting on job and salary.
+#SELECT ENAME,JOB,SAL FROM EMPLOYEE ORDER BY JOB ,SAL ASC;
+#46. Display the names, jobs and salaries of employees, sorting on descending order of job and within job sorted on salary.
+#SELECT ENAME,JOB,SAL FROM EMPLOYEE ORDER BY JOB DESC,SAL ASC;
+#DESC DEPARTMENT;
+#INSERT INTO DEPARTMENT VALUES(10,'FINANCE');
+#INSERT INTO DEPARTMENT VALUES(20,'SALES');
+#INSERT INTO DEPARTMENT VALUES(30,'TESTER');
+#INSERT INTO DEPARTMENT VALUES(40,'DEVELOPER');
+#SELECT * FROM DEPARTMENT;
+#47. List the employee names, department names and salary for those employees who have completed 1 year of service.
+#SELECT ENAME,DEPTNO,SAL FROM batch98.employee2 WHERE PERIOD_DIFF(DATE_FORMAT(NOW(), '%Y%m'),DATE_FORMAT(HIRE_DATE, '%Y%m'))>=12;
+#48. List the employee names, department names and salary for those employees who are earning 0 commission or commission is null. Sort your output in the order of department name
+#SELECT ENAME,DNAME,SAL FROM EMPLOYEE,DEPARTMENT WHERE COMM IS NULL ORDER BY DNAME;
+#49. List the employee names, department names and hiredate for those employees who have joined in 2003 . Sort your output in the order of joining date.
+#SELECT ENAME,DNAME,HIRE_DATE FROM EMPLOYEE2,DEPARTMENT WHERE COMM IS NULL AND HIRE_DATE='2003-12-18' ORDER BY HIRE_DATE ;
+                              (OR)
+#SELECT ENAME,DNAME,HIRE_DATE FROM EMPLOYEE2,DEPARTMENT WHERE COMM IS NULL AND YEAR( HIRE_DATE)=2003 ORDER BY HIRE_DATE ;
+
+
+
+
+
+
+

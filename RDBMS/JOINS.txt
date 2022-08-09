@@ -1,0 +1,195 @@
+                                            RDBMS DAY-4
+
+
+JOINS:
+
+JOIN: A JOIN clause is used to combine rows from two or more tables, based on a related column between them.
+
+TYPES OF JOINS:
+
+1)INNER JOIN
+2)NATURAL JOIN
+3)OUTER JOIN
+    A)LEFT OUTER JOIN
+    B)RIGHT OUTER JOIN
+    C)FULL OUTER JOIN
+4)CROSS JOIN
+
+1)INNER JOIN:INNER JOIN IS USED TO RETURN ALL ROWS FROM MULTIPLE TABLES WHERE THE JOIN CONDITIOON IS SATISIFIED.
+
+
+EXAMPLE:
+
+       TAB1		
+
+                      
++------+------+
+| A    | B    |
++------+------+
+|    1 |    2 |
+|    3 |    4 |
+|    5 |    6 |
+|    7 |    8 |
++------+------+
+
+    TAB2
+
++------+------+
+| B    | c    |
++------+------+
+|    3 |    1 |
+|    4 |    1 |
+|    8 |    1 |
++------+------+
+
+
+
+SELECT * FROM TAB1 INNER JOIN TAB2 ON TAB1.B=TAB2.B;
+
++------+------+------+------+
+| A    | B    | B    | c    |
++------+------+------+------+
+|    3 |    4 |    4 |    1 |
+|    7 |    8 |    8 |    1 |
++------+------+------+------+
+
+       
+
+
+2)NATURAL JOIN:THE NATURAL JOIN WILL JOIN THE TABLES NATURALLY SO WE WILL NOT GIVE ANY CONDITION.
+
+EXAMPLE:
+
+SELECT * FROM TAB1 NATURAL JOIN TAB2;
+
++------+------+------+
+| B    | A    | c    |
++------+------+------+
+|    4 |    3 |    1 |
+|    8 |    7 |    1 |
++------+------+------+
+
+
+3)
+
+A)LEFT OUTER JOIN:THE LEFT OUTER JOIN RETURNS ALL ROWS FROM THE LEFT TABLE AND ONLY THOSE ROWS FROM THE OTHER TABLE WHERE JOIN CONDITION IS SATISIFIED.
+
+EXAMPLE:
+
+SELECT * FROM TAB1 LEFT OUTER JOIN TAB2 ON TAB1.B=TAB2.B;
+
+ +------+------+------+------+
+| A    | B    | B    | c    |
++------+------+------+------+
+|    1 |    2 | NULL | NULL |
+|    3 |    4 |    4 |    1 |
+|    5 |    6 | NULL | NULL |
+|    7 |    8 |    8 |    1 |
++------+------+------+------+
+
+B)RIGHT OUTER JOIN:THE RIGHT OUTER JOIN RETURNS ALL THE ROWS FROM THE RIGHT TABLE AND ONLY THOSE ROWS FROM THE OTHER TABLE WHERE THE CONDITION IS SATISIFIED.
+
+SELECT * FROM TAB1 RIGHT OUTER JOIN TAB2 ON TAB1.B=TAB2.B;
+
++------+------+------+------+
+| A    | B    | B    | c    |
++------+------+------+------+
+| NULL | NULL |    3 |    1 |
+|    3 |    4 |    4 |    1 |
+|    7 |    8 |    8 |    1 |
++------+------+------+------+
+
+
+C)FULL OUTER  JOIN: COMBINATION OF LEFT AND RIGHT OUTER JOINS.
+
+ SELECT * FROM TAB1 LEFT OUTER JOIN TAB2 ON TAB1.B=TAB2.B UNION SELECT * FROM TAB1 RIGHT OUTER JOIN TAB2 ON TAB1.B=TAB2.B;
+
++------+------+------+------+
+| A    | B    | B    | c    |
++------+------+------+------+
+|    1 |    2 | NULL | NULL |
+|    3 |    4 |    4 |    1 |
+|    5 |    6 | NULL | NULL |
+|    7 |    8 |    8 |    1 |
+| NULL | NULL |    3 |    1 |
++------+------+------+------+
+
+
+4)CROSS JOIN:
+
+    TAB3
+              
+
++------+------+
+| A    | D    |
++------+------+
+|    1 |    2 |
+|    3 |    4 |
+|    5 |    6 |
++------+------+
+
+    TAB2
+
++------+------+
+| B    | c    |
++------+------+
+|    3 |    1 |
+|    4 |    1 |
+|    8 |    1 |
++------+------+
+
+
+SELECT * FROM TAB2 CROSS JOIN TAB3;
+
+
++------+------+------+------+
+| B    | c    | A    | D    |
++------+------+------+------+
+|    8 |    1 |    1 |    2 |
+|    4 |    1 |    1 |    2 |
+|    3 |    1 |    1 |    2 |
+|    8 |    1 |    3 |    4 |
+|    4 |    1 |    3 |    4 |
+|    3 |    1 |    3 |    4 |
+|    8 |    1 |    5 |    6 |
+|    4 |    1 |    5 |    6 |
+|    3 |    1 |    5 |    6 |
++------+------+------+------+
+
+
+# CROSS JOIN -> All rows of CUSTOMERS * All rows of ORDERS
+
+SELECT * FROM customers CROSS JOIN orders;
+
+
+# INNER JOIN -> Only Common rows in CUSTOMERS and ORDERS
+
+SELECT customers.Cust_ID, customers.name, customers.email, orders.STATUS
+FROM customers, orders WHERE customers.Cust_ID = orders.Cust_Id;
+
+# OR
+
+SELECT A.Cust_ID, A.name, A.email, B.STATUS FROM CUSTOMERS AS A
+JOIN orders AS B WHERE A.Cust_ID = B.Cust_Id;
+
+LEFT (OUTER) JOIN -> all rows from Left table and common rows from Right table
+
+SELECT customers.Cust_ID, customers.name, customers.email, orders.STATUS
+FROM customers LEFT JOIN orders ON customers.Cust_ID = orders.Cust_Id ;
+
+RIGHT (OUTER) JOIN -> all rows from Right table and common rows from Left table
+
+SELECT customers.Cust_ID, customers.name, customers.email, orders.STATUS
+FROM customers RIGHT JOIN orders ON customers.Cust_ID = orders.Cust_Id ;
+
+SELF JOIN -> A self join is a regular join, but the table is joined with itself.
+
+SELECT A.Cust_ID, B.name, A.email
+FROM customers A, customers B WHERE A.Cust_ID = 2;
+ 
+Sub Query
+
+SELECT * FROM customers WHERE Cust_ID IN (2, 4); # manually
+
+
+

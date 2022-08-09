@@ -1,0 +1,1011 @@
+                                           MY PRACTICE 
+
+
+EMPLOYEE2 TABLE:
+
+1.CREATE EMPLOYEE TABLE.
+
+SELECT * FROM EMPLOYEE2;
++-------+--------+-----------+------------+-------+------+------+--------+
+| EMPNO | ENAME  | JOB       | HIRE_DATE  | MGR   | SAL  | COMM | DEPTNO |
++-------+--------+-----------+------------+-------+------+------+--------+
+|  7369 | SMITH  | CLERK     | 2017-12-17 |  7902 |  800 | NULL |     20 |
+|  7499 | ALLEN  | SALESMAN  | 2020-02-18 |  7698 | 1600 |  300 |     30 |
+|  7521 | WARD   | SALESMAN  | 2022-02-18 |  7698 | 1250 |  500 |     30 |
+|  7566 | JONES  | MANAGER   | 2002-04-18 |  7839 | 2975 | NULL |     20 |
+|  7654 | MARTIN | SALESMAN  | 2028-09-18 |  7698 | 1250 | 1400 |     30 |
+|  7698 | BLAKE  | MANAGER   | 2001-05-18 |  7839 | 2850 | NULL |     30 |
+|  7782 | CLARK  | MANAGER   | 2009-06-18 |  7839 | 2450 | NULL |     10 |
+|  7788 | SCOTT  | ANALYST   | 2019-04-17 |  7566 | 3000 | NULL |     20 |
+|  7839 | KING   | PRESIDENT | 2017-11-18 |  NULL | 5000 | NULL |     10 |
+|  7844 | TURNER | SALESMAN  | 2008-09-18 |  7698 | 1500 |    0 |     30 |
+|  7876 | ADAMS  | CLERK     | 2023-05-17 |  7788 | 1100 | NULL |     20 |
+|  7900 | JAMES  | CLERK     | 2003-12-18 |  7698 |  950 | NULL |     30 |
+|  7902 | FORD   | ANALYST   | 2003-12-18 |  7566 | 3000 | NULL |     20 |
+|  7934 | MILLER | CLERK     | 2023-01-28 | 77826 | 1300 | NULL |     10 |
++-------+--------+-----------+------------+-------+------+------+--------+
+
+
+2. Select the employees in department 30.
+
+
+SELECT * FROM EMPLOYEE2 WHERE DEPTNO=30;
+
++-------+--------+----------+------------+------+------+------+--------+
+| EMPNO | ENAME  | JOB      | HIRE_DATE  | MGR  | SAL  | COMM | DEPTNO |
++-------+--------+----------+------------+------+------+------+--------+
+|  7499 | ALLEN  | SALESMAN | 2020-02-18 | 7698 | 1600 |  300 |     30 |
+|  7521 | WARD   | SALESMAN | 2022-02-18 | 7698 | 1250 |  500 |     30 |
+|  7654 | MARTIN | SALESMAN | 2028-09-18 | 7698 | 1250 | 1400 |     30 |
+|  7698 | BLAKE  | MANAGER  | 2001-05-18 | 7839 | 2850 | NULL |     30 |
+|  7844 | TURNER | SALESMAN | 2008-09-18 | 7698 | 1500 |    0 |     30 |
+|  7900 | JAMES  | CLERK    | 2003-12-18 | 7698 |  950 | NULL |     30 |
++-------+--------+----------+------------+------+------+------+--------+
+
+3. List the names, numbers and departments of all clerks.
+
+SELECT ENAME,EMPNO,DEPTNO FROM EMPLOYEE2 WHERE JOB='CLERK';
++--------+-------+--------+
+| ENAME  | EMPNO | DEPTNO |
++--------+-------+--------+
+| SMITH  |  7369 |     20 |
+| ADAMS  |  7876 |     20 |
+| JAMES  |  7900 |     30 |
+| MILLER |  7934 |     10 |
++--------+-------+--------+
+
+4. Find the department numbers and names of employees of all departments with deptno greater than 20.
+
+SELECT DEPTNO,ENAME FROM EMPLOYEE2 WHERE DEPTNO>20;
+
++--------+--------+
+| DEPTNO | ENAME  |
++--------+--------+
+|     30 | ALLEN  |
+|     30 | WARD   |
+|     30 | MARTIN |
+|     30 | BLAKE  |
+|     30 | TURNER |
+|     30 | JAMES  |
++--------+--------+
+
+5. Find employees whose commission is greater than their salaries.
+
+SELECT * FROM EMPLOYEE2 WHERE COMM>SAL;
+
++-------+--------+----------+------------+------+------+------+--------+
+| EMPNO | ENAME  | JOB      | HIRE_DATE  | MGR  | SAL  | COMM | DEPTNO |
++-------+--------+----------+------------+------+------+------+--------+
+|  7654 | MARTIN | SALESMAN | 2028-09-18 | 7698 | 1250 | 1400 |     30 |
++-------+--------+----------+------------+------+------+------+--------+
+
+6. Find employees whose commission is greater than 60 % of their salaries.
+
+SELECT * FROM EMPLOYEE2 WHERE COMM> (0.06)+SAL;
+
++-------+--------+----------+------------+------+------+------+--------+
+| EMPNO | ENAME  | JOB      | HIRE_DATE  | MGR  | SAL  | COMM | DEPTNO |
++-------+--------+----------+------------+------+------+------+--------+
+|  7654 | MARTIN | SALESMAN | 2028-09-18 | 7698 | 1250 | 1400 |     30 |
++-------+--------+----------+------------+------+------+------+--------+
+
+7. List name, job and salary of all employees in department 20 who earn more than 2000/
+
+SELECT ENAME,JOB,SAL FROM EMPLOYEE2 WHERE DEPTNO=20 AND SAL >2000;
+
++-------+---------+------+
+| ENAME | JOB     | SAL  |
++-------+---------+------+
+| JONES | MANAGER | 2975 |
+| SCOTT | ANALYST | 3000 |
+| FORD  | ANALYST | 3000 |
++-------+---------+------+
+
+8. Find all salesmen in department 30 whose salary is greater than 1500/-.
+
+SELECT * FROM EMPLOYEE2 WHERE JOB='SALESMAN' AND DEPTNO=30 AND SAL >1500;
+
++-------+-------+----------+------------+------+------+------+--------+
+| EMPNO | ENAME | JOB      | HIRE_DATE  | MGR  | SAL  | COMM | DEPTNO |
++-------+-------+----------+------------+------+------+------+--------+
+|  7499 | ALLEN | SALESMAN | 2020-02-18 | 7698 | 1600 |  300 |     30 |
++-------+-------+----------+------------+------+------+------+--------+
+
+9. Find all employees whose designation is either manager or president.
+
+
+SELECT * FROM EMPLOYEE2 WHERE JOB='MANAGER' OR JOB='PRESIDENT';
+
++-------+-------+-----------+------------+------+------+------+--------+
+| EMPNO | ENAME | JOB       | HIRE_DATE  | MGR  | SAL  | COMM | DEPTNO |
++-------+-------+-----------+------------+------+------+------+--------+
+|  7566 | JONES | MANAGER   | 2002-04-18 | 7839 | 2975 | NULL |     20 |
+|  7698 | BLAKE | MANAGER   | 2001-05-18 | 7839 | 2850 | NULL |     30 |
+|  7782 | CLARK | MANAGER   | 2009-06-18 | 7839 | 2450 | NULL |     10 |
+|  7839 | KING  | PRESIDENT | 2017-11-18 | NULL | 5000 | NULL |     10 |
++-------+-------+-----------+------------+------+------+------+--------+
+
+10. Find all managers who are not in department 30.
+
+SELECT * FROM EMPLOYEE2 WHERE JOB='MANAGER' AND DEPTNO != 30;
+
++-------+-------+---------+------------+------+------+------+--------+
+| EMPNO | ENAME | JOB     | HIRE_DATE  | MGR  | SAL  | COMM | DEPTNO |
++-------+-------+---------+------------+------+------+------+--------+
+|  7566 | JONES | MANAGER | 2002-04-18 | 7839 | 2975 | NULL |     20 |
+|  7782 | CLARK | MANAGER | 2009-06-18 | 7839 | 2450 | NULL |     10 |
++-------+-------+---------+------------+------+------+------+--------+
+
+11. Find all the details of managers and clerks in dept 10.
+
+SELECT * FROM EMPLOYEE2 WHERE JOB IN('MANAGER','CLERK') AND  DEPTNO=10;
+
++-------+--------+---------+------------+-------+------+------+--------+
+| EMPNO | ENAME  | JOB     | HIRE_DATE  | MGR   | SAL  | COMM | DEPTNO |
++-------+--------+---------+------------+-------+------+------+--------+
+|  7782 | CLARK  | MANAGER | 2009-06-18 |  7839 | 2450 | NULL |     10 |
+|  7934 | MILLER | CLERK   | 2023-01-28 | 77826 | 1300 | NULL |     10 |
++-------+--------+---------+------------+-------+------+------+--------+
+
+12. Find the details of all the managers (in any dept) and clerks in dept 20.
+
+SELECT * FROM EMPLOYEE2 WHERE JOB='MANAGER' OR (JOB='CLERK' AND DEPTNO=20);
+
++-------+-------+---------+------------+------+------+------+--------+
+| EMPNO | ENAME | JOB     | HIRE_DATE  | MGR  | SAL  | COMM | DEPTNO |
++-------+-------+---------+------------+------+------+------+--------+
+|  7369 | SMITH | CLERK   | 2017-12-17 | 7902 |  800 | NULL |     20 |
+|  7566 | JONES | MANAGER | 2002-04-18 | 7839 | 2975 | NULL |     20 |
+|  7698 | BLAKE | MANAGER | 2001-05-18 | 7839 | 2850 | NULL |     30 |
+|  7782 | CLARK | MANAGER | 2009-06-18 | 7839 | 2450 | NULL |     10 |
+|  7876 | ADAMS | CLERK   | 2023-05-17 | 7788 | 1100 | NULL |     20 |
++-------+-------+---------+------------+------+------+------+--------+
+
+13. Find the details of all the managers in dept. 10 and all clerks in dept 20 and all employees who are neither managers nor clerks but whose salary is more than or equal to 2000/-.
+
+
+SELECT * FROM EMPLOYEE2 WHERE (JOB='MANAGER' AND DEPTNO=10) OR (JOB='CLERK' AND DEPTNO=20) OR (SAL>=2000 AND JOB <>'MANAGER' AND JOB <>'CLERK');
+
++-------+-------+-----------+------------+------+------+------+--------+
+| EMPNO | ENAME | JOB       | HIRE_DATE  | MGR  | SAL  | COMM | DEPTNO |
++-------+-------+-----------+------------+------+------+------+--------+
+|  7369 | SMITH | CLERK     | 2017-12-17 | 7902 |  800 | NULL |     20 |
+|  7782 | CLARK | MANAGER   | 2009-06-18 | 7839 | 2450 | NULL |     10 |
+|  7788 | SCOTT | ANALYST   | 2019-04-17 | 7566 | 3000 | NULL |     20 |
+|  7839 | KING  | PRESIDENT | 2017-11-18 | NULL | 5000 | NULL |     10 |
+|  7876 | ADAMS | CLERK     | 2023-05-17 | 7788 | 1100 | NULL |     20 |
+|  7902 | FORD  | ANALYST   | 2003-12-18 | 7566 | 3000 | NULL |     20 |
++-------+-------+-----------+------------+------+------+------+--------+
+
+14. Find the names of anyone in dept. 20 who is neither manager nor clerk.
+
+SELECT ENAME FROM EMPLOYEE2 WHERE DEPTNO=20 AND (JOB='MANAGER' OR 'CLERK');
+
++-------+
+| ENAME |
++-------+
+| JONES |
++-------+
+
+15. Find the names of employees who earn between 1200/- and 1400/-.
+
+SELECT ENAME FROM EMPLOYEE2 WHERE SAL BETWEEN 1200 AND 1400;
++--------+
+| ENAME  |
++--------+
+| WARD   |
+| MARTIN |
+| MILLER |
++--------+
+16. Find the employees who are clerks, analysts or salesmen.
+
+SELECT * FROM EMPLOYEE2 WHERE JOB IN ('CLERK','ANALYST','SALESMAN');
++-------+--------+----------+------------+-------+------+------+--------+
+| EMPNO | ENAME  | JOB      | HIRE_DATE  | MGR   | SAL  | COMM | DEPTNO |
++-------+--------+----------+------------+-------+------+------+--------+
+|  7369 | SMITH  | CLERK    | 2017-12-17 |  7902 |  800 | NULL |     20 |
+|  7499 | ALLEN  | SALESMAN | 2020-02-18 |  7698 | 1600 |  300 |     30 |
+|  7521 | WARD   | SALESMAN | 2022-02-18 |  7698 | 1250 |  500 |     30 |
+|  7654 | MARTIN | SALESMAN | 2028-09-18 |  7698 | 1250 | 1400 |     30 |
+|  7788 | SCOTT  | ANALYST  | 2019-04-17 |  7566 | 3000 | NULL |     20 |
+|  7844 | TURNER | SALESMAN | 2008-09-18 |  7698 | 1500 |    0 |     30 |
+|  7876 | ADAMS  | CLERK    | 2023-05-17 |  7788 | 1100 | NULL |     20 |
+|  7900 | JAMES  | CLERK    | 2003-12-18 |  7698 |  950 | NULL |     30 |
+|  7902 | FORD   | ANALYST  | 2003-12-18 |  7566 | 3000 | NULL |     20 |
+|  7934 | MILLER | CLERK    | 2023-01-28 | 77826 | 1300 | NULL |     10 |
++-------+--------+----------+------------+-------+------+------+--------+
+
+17. Find the employees who are not clerks, analysts or salesmen.
+
+SELECT  * FROM EMPLOYEE2 WHERE JOB NOT IN('CLERK','ANALYST','SALESMAN');
+
++-------+-------+-----------+------------+------+------+------+--------+
+| EMPNO | ENAME | JOB       | HIRE_DATE  | MGR  | SAL  | COMM | DEPTNO |
++-------+-------+-----------+------------+------+------+------+--------+
+|  7566 | JONES | MANAGER   | 2002-04-18 | 7839 | 2975 | NULL |     20 |
+|  7698 | BLAKE | MANAGER   | 2001-05-18 | 7839 | 2850 | NULL |     30 |
+|  7782 | CLARK | MANAGER   | 2009-06-18 | 7839 | 2450 | NULL |     10 |
+|  7839 | KING  | PRESIDENT | 2017-11-18 | NULL | 5000 | NULL |     10 |
++-------+-------+-----------+------------+------+------+------+--------+
+
+18. Find the employees who do not receive commission.
+
+SELECT * FROM EMPLOYEE2 WHERE COMM IS NULL;
+
+-------+--------+-----------+------------+-------+------+------+--------+
+| EMPNO | ENAME  | JOB       | HIRE_DATE  | MGR   | SAL  | COMM | DEPTNO |
++-------+--------+-----------+------------+-------+------+------+--------+
+|  7369 | SMITH  | CLERK     | 2017-12-17 |  7902 |  800 | NULL |     20 |
+|  7566 | JONES  | MANAGER   | 2002-04-18 |  7839 | 2975 | NULL |     20 |
+|  7698 | BLAKE  | MANAGER   | 2001-05-18 |  7839 | 2850 | NULL |     30 |
+|  7782 | CLARK  | MANAGER   | 2009-06-18 |  7839 | 2450 | NULL |     10 |
+|  7788 | SCOTT  | ANALYST   | 2019-04-17 |  7566 | 3000 | NULL |     20 |
+|  7839 | KING   | PRESIDENT | 2017-11-18 |  NULL | 5000 | NULL |     10 |
+|  7876 | ADAMS  | CLERK     | 2023-05-17 |  7788 | 1100 | NULL |     20 |
+|  7900 | JAMES  | CLERK     | 2003-12-18 |  7698 |  950 | NULL |     30 |
+|  7902 | FORD   | ANALYST   | 2003-12-18 |  7566 | 3000 | NULL |     20 |
+|  7934 | MILLER | CLERK     | 2023-01-28 | 77826 | 1300 | NULL |     10 |
++-------+--------+-----------+------------+-------+------+------+--------+
+
+19. Find the different jobs of employees receiving commission.
+
+SELECT JOB FROM EMPLOYEE2 WHERE COMM IS NOT NULL;
+
++----------+
+| JOB      |
++----------+
+| SALESMAN |
+| SALESMAN |
+| SALESMAN |
+| SALESMAN |
++----------+
+20. Find the employees who do not receive commission or whose commission is less than 100/-
+
+SELECT * FROM EMPLOYEE2 WHERE COMM IS NULL OR COMM<100;
+
++-------+--------+-----------+------------+-------+------+------+--------+
+| EMPNO | ENAME  | JOB       | HIRE_DATE  | MGR   | SAL  | COMM | DEPTNO |
++-------+--------+-----------+------------+-------+------+------+--------+
+|  7369 | SMITH  | CLERK     | 2017-12-17 |  7902 |  800 | NULL |     20 |
+|  7566 | JONES  | MANAGER   | 2002-04-18 |  7839 | 2975 | NULL |     20 |
+|  7698 | BLAKE  | MANAGER   | 2001-05-18 |  7839 | 2850 | NULL |     30 |
+|  7782 | CLARK  | MANAGER   | 2009-06-18 |  7839 | 2450 | NULL |     10 |
+|  7788 | SCOTT  | ANALYST   | 2019-04-17 |  7566 | 3000 | NULL |     20 |
+|  7839 | KING   | PRESIDENT | 2017-11-18 |  NULL | 5000 | NULL |     10 |
+|  7844 | TURNER | SALESMAN  | 2008-09-18 |  7698 | 1500 |    0 |     30 |
+|  7876 | ADAMS  | CLERK     | 2023-05-17 |  7788 | 1100 | NULL |     20 |
+|  7900 | JAMES  | CLERK     | 2003-12-18 |  7698 |  950 | NULL |     30 |
+|  7902 | FORD   | ANALYST   | 2003-12-18 |  7566 | 3000 | NULL |     20 |
+|  7934 | MILLER | CLERK     | 2023-01-28 | 77826 | 1300 | NULL |     10 |
++-------+--------+-----------+------------+-------+------+------+--------+
+ 
+21. If all the employees not receiving commission is entitles to a bonus of Rs. 250/- show the net earnings of all the employees.
+
+SELECT IF(COMM IS NULL,(SAL+250),(SAL+COMM)) AS TOTALEARNINGS FROM EMPLOYEE2;
+
++---------------+
+| TOTALEARNINGS |
++---------------+
+|          1050 |
+|          1900 |
+|          1750 |
+|          3225 |
+|          2650 |
+|          3100 |
+|          2700 |
+|          3250 |
+|          5250 |
+|          1500 |
+|          1350 |
+|          1200 |
+|          3250 |
+|          1550 |
++---------------+
+
+22. Find all the employees whose total earning is greater than 2000/- .
+
+SELECT * FROM EMPLOYEE2 WHERE SAL+ COMM>2000;
+
++-------+--------+----------+------------+------+------+------+--------+
+| EMPNO | ENAME  | JOB      | HIRE_DATE  | MGR  | SAL  | COMM | DEPTNO |
++-------+--------+----------+------------+------+------+------+--------+
+|  7654 | MARTIN | SALESMAN | 2028-09-18 | 7698 | 1250 | 1400 |     30 |
++-------+--------+----------+------------+------+------+------+--------+
+
+23. Find all the employees whose name begins or ends with ‘M’
+
+SELECT * FROM EMPLOYEE2 WHERE ENAME LIKE 'M%' OR ENAME LIKE '%M';
+
++-------+--------+----------+------------+-------+------+------+--------+
+| EMPNO | ENAME  | JOB      | HIRE_DATE  | MGR   | SAL  | COMM | DEPTNO |
++-------+--------+----------+------------+-------+------+------+--------+
+|  7654 | MARTIN | SALESMAN | 2028-09-18 |  7698 | 1250 | 1400 |     30 |
+|  7934 | MILLER | CLERK    | 2023-01-28 | 77826 | 1300 | NULL |     10 |
++-------+--------+----------+------------+-------+------+------+--------+
+
+24. Find all the employees whose names contain the letter ‘M’ in any case.
+
+SELECT  * FROM  EMPLOYEE2 WHERE ENAME LIKE '%M%';
+-------+--------+----------+------------+-------+------+------+--------+
+| EMPNO | ENAME  | JOB      | HIRE_DATE  | MGR   | SAL  | COMM | DEPTNO |
++-------+--------+----------+------------+-------+------+------+--------+
+|  7369 | SMITH  | CLERK    | 2017-12-17 |  7902 |  800 | NULL |     20 |
+|  7654 | MARTIN | SALESMAN | 2028-09-18 |  7698 | 1250 | 1400 |     30 |
+|  7876 | ADAMS  | CLERK    | 2023-05-17 |  7788 | 1100 | NULL |     20 |
+|  7900 | JAMES  | CLERK    | 2003-12-18 |  7698 |  950 | NULL |     30 |
+|  7934 | MILLER | CLERK    | 2023-01-28 | 77826 | 1300 | NULL |     10 |
++-------+--------+----------+------------+-------+------+------+--------+
+
+25. Find all the employees whose names are upto 15 character long and have letter ‘R’ as 3rd character of their names.
+
+SELECT ENAME FROM EMPLOYEE2 WHERE ENAME LIKE '__R%' AND LENGTH(ENAME)<15;
++--------+
+| ENAME  |
++--------+
+| WARD   |
+| MARTIN |
+| TURNER |
+| FORD   |
++--------+
+
+
+26. Find all the employees who were hired in the month of February (of any year).
+
+select * from employee2 WHERE EXTRACT(MONTH FROM HIREDATE) = 2;
+
++-------+-------+----------+------------+------+------+------+--------+
+| EMPNO | ENAME | JOB      | HIRE_DATE  | MGR  | SAL  | COMM | DEPTNO |
++-------+-------+----------+------------+------+------+------+--------+
+|  7499 | ALLEN | SALESMAN | 2020-02-18 | 7698 | 1600 |  300 |     30 |
+|  7521 | WARD  | SALESMAN | 2022-02-18 | 7698 | 1250 |  500 |     30 |
++-------+-------+----------+------------+------+------+------+--------+
+
+ 27. Find all the employees who were hired on last day of the month.
+
+
+ select EXTRACT(DAY FROM HIRE_DATE) as A, EXTRACT(DAY FROM LAST_DAY(HIRE_DATE)) as B from employee2;
++------+------+
+| A    | B    |
++------+------+
+|   17 |   31 |
+|   18 |   29 |
+|   18 |   28 |
+|   18 |   30 |
+|   18 |   30 |
+|   18 |   31 |
+|   18 |   30 |
+|   17 |   30 |
+|   18 |   30 |
+|   18 |   30 |
+|   17 |   31 |
+|   18 |   31 |
+|   18 |   31 |
+|   28 |   31 |
++------+------+
+                     
+28. Find all the employees who were hired more than 2 years ago.
+
+select * from employee2 WHERE DATEDIFF(NOW(), HIRE_DATE) > 730;
+
++-------+--------+-----------+------------+------+------+------+--------+
+| EMPNO | ENAME  | JOB       | HIRE_DATE  | MGR  | SAL  | COMM | DEPTNO |
++-------+--------+-----------+------------+------+------+------+--------+
+|  7369 | SMITH  | CLERK     | 2017-12-17 | 7902 |  800 | NULL |     20 |
+|  7566 | JONES  | MANAGER   | 2002-04-18 | 7839 | 2975 | NULL |     20 |
+|  7698 | BLAKE  | MANAGER   | 2001-05-18 | 7839 | 2850 | NULL |     30 |
+|  7782 | CLARK  | MANAGER   | 2009-06-18 | 7839 | 2450 | NULL |     10 |
+|  7788 | SCOTT  | ANALYST   | 2019-04-17 | 7566 | 3000 | NULL |     20 |
+|  7839 | KING   | PRESIDENT | 2017-11-18 | NULL | 5000 | NULL |     10 |
+|  7844 | TURNER | SALESMAN  | 2008-09-18 | 7698 | 1500 |    0 |     30 |
+|  7900 | JAMES  | CLERK     | 2003-12-18 | 7698 |  950 | NULL |     30 |
+|  7902 | FORD   | ANALYST   | 2003-12-18 | 7566 | 3000 | NULL |     20 |
++-------+--------+-----------+------------+------+------+------+--------+
+
+
+29. Find the managers hired in the year 2003.
+
+SELECT * FROM employee2 WHERE JOB = 'MANAGER' and EXTRACT(YEAR FROM HIRE_DATE) = 2003;
+
+mysql> update employee2 set hire_date='2003-04-18' where empno=7566;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from employee2;
++-------+--------+-----------+------------+-------+------+------+--------+
+| EMPNO | ENAME  | JOB       | HIRE_DATE  | MGR   | SAL  | COMM | DEPTNO |
++-------+--------+-----------+------------+-------+------+------+--------+
+|  7369 | SMITH  | CLERK     | 2017-12-17 |  7902 |  800 | NULL |     20 |
+|  7499 | ALLEN  | SALESMAN  | 2020-02-18 |  7698 | 1600 |  300 |     30 |
+|  7521 | WARD   | SALESMAN  | 2022-02-18 |  7698 | 1250 |  500 |     30 |
+|  7566 | JONES  | MANAGER   | 2003-04-18 |  7839 | 2975 | NULL |     20 |
+|  7654 | MARTIN | SALESMAN  | 2028-09-18 |  7698 | 1250 | 1400 |     30 |
+|  7698 | BLAKE  | MANAGER   | 2001-05-18 |  7839 | 2850 | NULL |     30 |
+|  7782 | CLARK  | MANAGER   | 2009-06-18 |  7839 | 2450 | NULL |     10 |
+|  7788 | SCOTT  | ANALYST   | 2019-04-17 |  7566 | 3000 | NULL |     20 |
+|  7839 | KING   | PRESIDENT | 2017-11-18 |  NULL | 5000 | NULL |     10 |
+|  7844 | TURNER | SALESMAN  | 2008-09-18 |  7698 | 1500 |    0 |     30 |
+|  7876 | ADAMS  | CLERK     | 2023-05-17 |  7788 | 1100 | NULL |     20 |
+|  7900 | JAMES  | CLERK     | 2003-12-18 |  7698 |  950 | NULL |     30 |
+|  7902 | FORD   | ANALYST   | 2003-12-18 |  7566 | 3000 | NULL |     20 |
+|  7934 | MILLER | CLERK     | 2023-01-28 | 77826 | 1300 | NULL |     10 |
++-------+--------+-----------+------------+-------+------+------+--------+
+14 rows in set (0.00 sec)
+
+mysql> SELECT * FROM employee2 WHERE JOB = 'MANAGER' and EXTRACT(YEAR FROM HIRE_DATE) = 2003;
++-------+-------+---------+------------+------+------+------+--------+
+| EMPNO | ENAME | JOB     | HIRE_DATE  | MGR  | SAL  | COMM | DEPTNO |
++-------+-------+---------+------------+------+------+------+--------+
+|  7566 | JONES | MANAGER | 2003-04-18 | 7839 | 2975 | NULL |     20 |
++-------+-------+---------+------------+------+------+------+--------+
+
+30. Display the names and jobs of all the employees separated by a space
+
+SELECT concat(ENAME,' ', JOB) FROM employee2;
+
++------------------------+
+| concat(ENAME,' ', JOB) |
++------------------------+
+| SMITH CLERK            |
+| ALLEN SALESMAN         |
+| WARD SALESMAN          |
+| JONES MANAGER          |
+| MARTIN SALESMAN        |
+| BLAKE MANAGER          |
+| CLARK MANAGER          |
+| SCOTT ANALYST          |
+| KING PRESIDENT         |
+| TURNER SALESMAN        |
+| ADAMS CLERK            |
+| JAMES CLERK            |
+| FORD ANALYST           |
+| MILLER CLERK           |
++------------------------+
+
+31. Display the names of all the employees right aligning them to 15 characters.
+
+select CONCAT(ENAME , SPACE(15)) from employee2;
++---------------------------+
+| CONCAT(ENAME , SPACE(15)) |
++---------------------------+
+| SMITH                     |
+| ALLEN                     |
+| WARD                      |
+| JONES                     |
+| MARTIN                    |
+| BLAKE                     |
+| CLARK                     |
+| SCOTT                     |
+| KING                      |
+| TURNER                    |
+| ADAMS                     |
+| JAMES                     |
+| FORD                      |
+| MILLER                    |
++---------------------------+
+               (OR)
+select CONCAT(SPACE(15), ENAME ) from employee2;
++---------------------------+
+| CONCAT(SPACE(15), ENAME ) |
++---------------------------+
+|                SMITH      |
+|                ALLEN      |
+|                WARD       |
+|                JONES      |
+|                MARTIN     |
+|                BLAKE      |
+|                CLARK      |
+|                SCOTT      |
+|                KING       |
+|                TURNER     |
+|                ADAMS      |
+|                JAMES      |
+|                FORD       |
+|                MILLER     |
++---------------------------+
+
+32. Display the names of all the employees padding them to the right up to 15 characters with ‘*’.
+
+select rpad(ename,15,'*') from employee2;
++--------------------+
+| rpad(ename,15,'*') |
++--------------------+
+| SMITH**********    |
+| ALLEN**********    |
+| WARD***********    |
+| JONES**********    |
+| MARTIN*********    |
+| BLAKE**********    |
+| CLARK**********    |
+| SCOTT**********    |
+| KING***********    |
+| TURNER*********    |
+| ADAMS**********    |
+| JAMES**********    |
+| FORD***********    |
+| MILLER*********    |
++--------------------+
+          (OR)
+select CONCAT(ENAME , REPEAT("*", 15)) from employee2;
+
++---------------------------------+
+| CONCAT(ENAME , REPEAT("*", 15)) |
++---------------------------------+
+| SMITH***************            |
+| ALLEN***************            |
+| WARD***************             |
+| JONES***************            |
+| MARTIN***************           |
+| BLAKE***************            |
+| CLARK***************            |
+| SCOTT***************            |
+| KING***************             |
+| TURNER***************           |
+| ADAMS***************            |
+| JAMES***************            |
+| FORD***************             |
+| MILLER***************           |
++---------------------------------+
+33. Display the names of all the employees without any leading ‘A’.
+select trim(leading 'A' from ename) from employee2;
++------------------------------+
+| trim(leading 'A' from ename) |
++------------------------------+
+| SMITH                        |
+| LLEN                         |
+| WARD                         |
+| JONES                        |
+| MARTIN                       |
+| BLAKE                        |
+| CLARK                        |
+| SCOTT                        |
+| KING                         |
+| TURNER                       |
+| DAMS                         |
+| JAMES                        |
+| FORD                         |
+| MILLER                       |
++------------------------------+
+
+       (OR)
+SELECT ENAME FROM employee2 WHERE ENAME NOT LIKE 'A%';
++--------+
+| ENAME  |
++--------+
+| SMITH  |
+| WARD   |
+| JONES  |
+| MARTIN |
+| BLAKE  |
+| CLARK  |
+| SCOTT  |
+| KING   |
+| TURNER |
+| JAMES  |
+| FORD   |
+| MILLER |
++--------+
+34. Display the names of all the employees without any trailing ‘R’.
+
+select trim(trailing 'R' from ename) from employee2;
+-------------------------------+
+| trim(trailing 'R' from ename) |
++-------------------------------+
+| SMITH                         |
+| ALLEN                         |
+| WARD                          |
+| JONES                         |
+| MARTIN                        |
+| BLAKE                         |
+| CLARK                         |
+| SCOTT                         |
+| KING                          |
+| TURNE                         |
+| ADAMS                         |
+| JAMES                         |
+| FORD                          |
+| MILLE                         |
++-------------------------------+
+                    (or)
+SELECT ENAME FROM employee2 WHERE ENAME NOT LIKE '%R';
++--------+
+| ENAME  |
++--------+
+| SMITH  |
+| ALLEN  |
+| WARD   |
+| JONES  |
+| MARTIN |
+| BLAKE  |
+| CLARK  |
+| SCOTT  |
+| KING   |
+| ADAMS  |
+| JAMES  |
+| FORD   |
++--------+
+
+35. Show the first 3 and last 3 characters of the names of all the employees.
+
+SELECT SUBSTRING(ENAME,1,3) ,SUBSTRING(ENAME,LENGTH(ENAME)-2,LENGTH(ENAME))FROM EMPLOYEE2;
++----------------------+------------------------------------------------+
+| SUBSTRING(ENAME,1,3) | SUBSTRING(ENAME,LENGTH(ENAME)-2,LENGTH(ENAME)) |
++----------------------+------------------------------------------------+
+| SMI                  | ITH                                            |
+| ALL                  | LEN                                            |
+| WAR                  | ARD                                            |
+| JON                  | NES                                            |
+| MAR                  | TIN                                            |
+| BLA                  | AKE                                            |
+| CLA                  | ARK                                            |
+| SCO                  | OTT                                            |
+| KIN                  | ING                                            |
+| TUR                  | NER                                            |
+| ADA                  | AMS                                            |
+| JAM                  | MES                                            |
+| FOR                  | ORD                                            |
+| MIL                  | LER                                            |
++----------------------+------------------------------------------------+
+ 
+36. Display the names of all the employees replacing ‘A’ with ‘a’.
+
+select replace(ename,'A','a') from employee2;
++------------------------+
+| replace(ename,'A','a') |
++------------------------+
+| SMITH                  |
+| aLLEN                  |
+| WaRD                   |
+| JONES                  |
+| MaRTIN                 |
+| BLaKE                  |
+| CLaRK                  |
+| SCOTT                  |
+| KING                   |
+| TURNER                 |
+| aDaMS                  |
+| JaMES                  |
+| FORD                   |
+| MILLER                 |
++------------------------+
+
+37. Display the names of all the employees and position where the string ‘AR’ occurs in the name.
+
+select instr(ename,'AR') from employee2;
++-------------------+
+| instr(ename,'AR') |
++-------------------+
+|                 0 |
+|                 0 |
+|                 2 |
+|                 0 |
+|                 2 |
+|                 0 |
+|                 3 |
+|                 0 |
+|                 0 |
+|                 0 |
+|                 0 |
+|                 0 |
+|                 0 |
+|                 0 |
++-------------------+
+38. Show the salary of all the employees , rounding it to the nearest Rs. 1000/-.
+SELECT ENAME,CEILING(SAL/1000)*1000 FROM EMPLOYEE2;
++--------+------------------------+
+| ENAME  | CEILING(SAL/1000)*1000 |
++--------+------------------------+
+| SMITH  |                   1000 |
+| ALLEN  |                   2000 |
+| WARD   |                   2000 |
+| JONES  |                   3000 |
+| MARTIN |                   2000 |
+| BLAKE  |                   3000 |
+| CLARK  |                   3000 |
+| SCOTT  |                   3000 |
+| KING   |                   5000 |
+| TURNER |                   2000 |
+| ADAMS  |                   2000 |
+| JAMES  |                   1000 |
+| FORD   |                   3000 |
+| MILLER |                   2000 |
++--------+------------------------+
+            (OR)
+SELECT FLOOR(SAL) FROM employee2 WHERE floor(sal) = 1000 OR CEIL(sal) = 1000;
+
+39. Show the salary of all the employees , ignoring the fraction less than Rs. 1000/-.
+
+SELECT * FROM employee2 WHERE FLOOR(SAL) <= 1000;
++-------+-------+-------+------------+------+------+------+--------+
+| EMPNO | ENAME | JOB   | HIRE_DATE  | MGR  | SAL  | COMM | DEPTNO |
++-------+-------+-------+------------+------+------+------+--------+
+|  7369 | SMITH | CLERK | 2017-12-17 | 7902 |  800 | NULL |     20 |
+|  7900 | JAMES | CLERK | 2003-12-18 | 7698 |  950 | NULL |     30 |
++-------+-------+-------+------------+------+------+------+--------+
+
+40. Show the names of all the employees and date on which they completed 3 years of service.
+
+SELECT ENAME,DATE_ADD(HIRE_DATE,INTERVAL 3 YEAR) FROM EMPLOYEE2;
++--------+-------------------------------------+
+| ENAME  | DATE_ADD(HIRE_DATE,INTERVAL 3 YEAR) |
++--------+-------------------------------------+
+| SMITH  | 2020-12-17                          |
+| ALLEN  | 2023-02-18                          |
+| WARD   | 2025-02-18                          |
+| JONES  | 2006-04-18                          |
+| MARTIN | 2031-09-18                          |
+| BLAKE  | 2004-05-18                          |
+| CLARK  | 2012-06-18                          |
+| SCOTT  | 2022-04-17                          |
+| KING   | 2020-11-18                          |
+| TURNER | 2011-09-18                          |
+| ADAMS  | 2026-05-17                          |
+| JAMES  | 2006-12-18                          |
+| FORD   | 2006-12-18                          |
+| MILLER | 2026-01-28                          |
++--------+-------------------------------------+
+                (OR)
+SELECT ENAME,ADDDATE(HIRE_DATE, INTERVAL 3 YEAR) FROM employee2;
++--------+-------------------------------------+
+| ENAME  | ADDDATE(HIRE_DATE, INTERVAL 3 YEAR) |
++--------+-------------------------------------+
+| SMITH  | 2020-12-17                          |
+| ALLEN  | 2023-02-18                          |
+| WARD   | 2025-02-18                          |
+| JONES  | 2006-04-18                          |
+| MARTIN | 2031-09-18                          |
+| BLAKE  | 2004-05-18                          |
+| CLARK  | 2012-06-18                          |
+| SCOTT  | 2022-04-17                          |
+| KING   | 2020-11-18                          |
+| TURNER | 2011-09-18                          |
+| ADAMS  | 2026-05-17                          |
+| JAMES  | 2006-12-18                          |
+| FORD   | 2006-12-18                          |
+| MILLER | 2026-01-28                          |
++--------+-------------------------------------+
+
+41. For each employee, display the no. of days passed since the employee joined the company.
+
+
+SELECT DATEDIFF(NOW() , HIRE_DATE) AS DAYS FROM employee2;
++-------+
+| DAYS  |
++-------+
+|  1486 |
+|   693 |
+|   -38 |
+|  6843 |
+| -2442 |
+|  7543 |
+|  4590 |
+|  1000 |
+|  1515 |
+|  4863 |
+|  -491 |
+|  6599 |
+|  6599 |
+|  -382 |
++-------+
+42. For each employee, display the no. of months passed since the employee joined the company.
+
+SELECT ENAME,PERIOD_DIFF(DATE_FORMAT(NOW(), '%Y%m'),DATE_FORMAT(HIRE_DATE, '%Y%m')) FROM employee2;
++--------+------------------------------------------------------------------------+
+| ENAME  | PERIOD_DIFF(DATE_FORMAT(NOW(), '%Y%m'),DATE_FORMAT(HIRE_DATE, '%Y%m')) |
++--------+------------------------------------------------------------------------+
+| SMITH  |                                                                     49 |
+| ALLEN  |                                                                     23 |
+| WARD   |                                                                     -1 |
+| JONES  |                                                                    225 |
+| MARTIN |                                                                    -80 |
+| BLAKE  |                                                                    248 |
+| CLARK  |                                                                    151 |
+| SCOTT  |                                                                     33 |
+| KING   |                                                                     50 |
+| TURNER |                                                                    160 |
+| ADAMS  |                                                                    -16 |
+| JAMES  |                                                                    217 |
+| FORD   |                                                                    217 |
+| MILLER |                                                                    -12 |
++--------+------------------------------------------------------------------------+
+               (OR)
+
+43. Display the details of all the employees sorted on the names.
+
+SELECT * FROM EMPLOYEE2 ORDER BY ENAME;
++-------+--------+-----------+------------+-------+------+------+--------+
+| EMPNO | ENAME  | JOB       | HIRE_DATE  | MGR   | SAL  | COMM | DEPTNO |
++-------+--------+-----------+------------+-------+------+------+--------+
+|  7876 | ADAMS  | CLERK     | 2023-05-17 |  7788 | 1100 | NULL |     20 |
+|  7499 | ALLEN  | SALESMAN  | 2020-02-18 |  7698 | 1600 |  300 |     30 |
+|  7698 | BLAKE  | MANAGER   | 2001-05-18 |  7839 | 2850 | NULL |     30 |
+|  7782 | CLARK  | MANAGER   | 2009-06-18 |  7839 | 2450 | NULL |     10 |
+|  7902 | FORD   | ANALYST   | 2003-12-18 |  7566 | 3000 | NULL |     20 |
+|  7900 | JAMES  | CLERK     | 2003-12-18 |  7698 |  950 | NULL |     30 |
+|  7566 | JONES  | MANAGER   | 2003-04-18 |  7839 | 2975 | NULL |     20 |
+|  7839 | KING   | PRESIDENT | 2017-11-18 |  NULL | 5000 | NULL |     10 |
+|  7654 | MARTIN | SALESMAN  | 2028-09-18 |  7698 | 1250 | 1400 |     30 |
+|  7934 | MILLER | CLERK     | 2023-01-28 | 77826 | 1300 | NULL |     10 |
+|  7788 | SCOTT  | ANALYST   | 2019-04-17 |  7566 | 3000 | NULL |     20 |
+|  7369 | SMITH  | CLERK     | 2017-12-17 |  7902 |  800 | NULL |     20 |
+|  7844 | TURNER | SALESMAN  | 2008-09-18 |  7698 | 1500 |    0 |     30 |
+|  7521 | WARD   | SALESMAN  | 2022-02-18 |  7698 | 1250 |  500 |     30 |
++-------+--------+-----------+------------+-------+------+------+--------+
+44. Display the names of the employees, based on the tenure with the oldest employee coming first.
+
+SELECT * FROM employee2 ORDER BY HIRE_DATE ASC;
+-------+--------+-----------+------------+-------+------+------+--------+
+| EMPNO | ENAME  | JOB       | HIRE_DATE  | MGR   | SAL  | COMM | DEPTNO |
++-------+--------+-----------+------------+-------+------+------+--------+
+|  7698 | BLAKE  | MANAGER   | 2001-05-18 |  7839 | 2850 | NULL |     30 |
+|  7566 | JONES  | MANAGER   | 2003-04-18 |  7839 | 2975 | NULL |     20 |
+|  7900 | JAMES  | CLERK     | 2003-12-18 |  7698 |  950 | NULL |     30 |
+|  7902 | FORD   | ANALYST   | 2003-12-18 |  7566 | 3000 | NULL |     20 |
+|  7844 | TURNER | SALESMAN  | 2008-09-18 |  7698 | 1500 |    0 |     30 |
+|  7782 | CLARK  | MANAGER   | 2009-06-18 |  7839 | 2450 | NULL |     10 |
+|  7839 | KING   | PRESIDENT | 2017-11-18 |  NULL | 5000 | NULL |     10 |
+|  7369 | SMITH  | CLERK     | 2017-12-17 |  7902 |  800 | NULL |     20 |
+|  7788 | SCOTT  | ANALYST   | 2019-04-17 |  7566 | 3000 | NULL |     20 |
+|  7499 | ALLEN  | SALESMAN  | 2020-02-18 |  7698 | 1600 |  300 |     30 |
+|  7521 | WARD   | SALESMAN  | 2022-02-18 |  7698 | 1250 |  500 |     30 |
+|  7934 | MILLER | CLERK     | 2023-01-28 | 77826 | 1300 | NULL |     10 |
+|  7876 | ADAMS  | CLERK     | 2023-05-17 |  7788 | 1100 | NULL |     20 |
+|  7654 | MARTIN | SALESMAN  | 2028-09-18 |  7698 | 1250 | 1400 |     30 |
++-------+--------+-----------+------------+-------+------+------+--------+
+
+45. Display the names, jobs and salaries of employees, sorting on job and salary.
+
+SELECT ENAME,JOB,SAL FROM EMPLOYEE2 ORDER BY JOB ,SAL ASC;
++--------+-----------+------+
+| ENAME  | JOB       | SAL  |
++--------+-----------+------+
+| SCOTT  | ANALYST   | 3000 |
+| FORD   | ANALYST   | 3000 |
+| SMITH  | CLERK     |  800 |
+| JAMES  | CLERK     |  950 |
+| ADAMS  | CLERK     | 1100 |
+| MILLER | CLERK     | 1300 |
+| CLARK  | MANAGER   | 2450 |
+| BLAKE  | MANAGER   | 2850 |
+| JONES  | MANAGER   | 2975 |
+| KING   | PRESIDENT | 5000 |
+| WARD   | SALESMAN  | 1250 |
+| MARTIN | SALESMAN  | 1250 |
+| TURNER | SALESMAN  | 1500 |
+| ALLEN  | SALESMAN  | 1600 |
++--------+-----------+------+
+
+46. Display the names, jobs and salaries of employees, sorting on descending order of job and within job sorted on salary.
+
+SELECT ENAME,JOB,SAL FROM EMPLOYEE2 ORDER BY JOB DESC,SAL ASC;
++--------+-----------+------+
+| ENAME  | JOB       | SAL  |
++--------+-----------+------+
+| WARD   | SALESMAN  | 1250 |
+| MARTIN | SALESMAN  | 1250 |
+| TURNER | SALESMAN  | 1500 |
+| ALLEN  | SALESMAN  | 1600 |
+| KING   | PRESIDENT | 5000 |
+| CLARK  | MANAGER   | 2450 |
+| BLAKE  | MANAGER   | 2850 |
+| JONES  | MANAGER   | 2975 |
+| SMITH  | CLERK     |  800 |
+| JAMES  | CLERK     |  950 |
+| ADAMS  | CLERK     | 1100 |
+| MILLER | CLERK     | 1300 |
+| SCOTT  | ANALYST   | 3000 |
+| FORD   | ANALYST   | 3000 |
++--------+-----------+------+
+
+DESC DEPARTMENT;
+INSERT INTO DEPARTMENT VALUES(10,'FINANCE');
+INSERT INTO DEPARTMENT VALUES(20,'SALES');
+INSERT INTO DEPARTMENT VALUES(30,'TESTER');
+INSERT INTO DEPARTMENT VALUES(40,'DEVELOPER');
+SELECT * FROM DEPARTMENT;
+47. List the employee names, department names and salary for those employees who have completed 1 year of service.
+
+SELECT ENAME,DEPTNO,SAL FROM employee2 WHERE PERIOD_DIFF(DATE_FORMAT(NOW(), '%Y%m'),DATE_FORMAT(HIRE_DATE, '%Y%m'))>=12;
++--------+--------+------+
+| ENAME  | DEPTNO | SAL  |
++--------+--------+------+
+| SMITH  |     20 |  800 |
+| ALLEN  |     30 | 1600 |
+| JONES  |     20 | 2975 |
+| BLAKE  |     30 | 2850 |
+| CLARK  |     10 | 2450 |
+| SCOTT  |     20 | 3000 |
+| KING   |     10 | 5000 |
+| TURNER |     30 | 1500 |
+| JAMES  |     30 |  950 |
+| FORD   |     20 | 3000 |
++--------+--------+------+
+48. List the employee names, department names and salary for those employees who are earning 0 commission or commission is null. Sort your output in the order of department name
+
+SELECT ENAME,DNAME,SAL FROM EMPLOYEE2,DEPARTMENT WHERE COMM IS NULL ORDER BY DNAME;
++--------+-----------+------+
+| ENAME  | DNAME     | SAL  |
++--------+-----------+------+
+| SMITH  | DEVELOPER |  800 |
+| MILLER | DEVELOPER | 1300 |
+| JONES  | DEVELOPER | 2975 |
+| BLAKE  | DEVELOPER | 2850 |
+| CLARK  | DEVELOPER | 2450 |
+| SCOTT  | DEVELOPER | 3000 |
+| KING   | DEVELOPER | 5000 |
+| ADAMS  | DEVELOPER | 1100 |
+| JAMES  | DEVELOPER |  950 |
+| FORD   | DEVELOPER | 3000 |
+| FORD   | FINANCE   | 3000 |
+| JAMES  | FINANCE   |  950 |
+| ADAMS  | FINANCE   | 1100 |
+| KING   | FINANCE   | 5000 |
+| SCOTT  | FINANCE   | 3000 |
+| CLARK  | FINANCE   | 2450 |
+| BLAKE  | FINANCE   | 2850 |
+| JONES  | FINANCE   | 2975 |
+| SMITH  | FINANCE   |  800 |
+| MILLER | FINANCE   | 1300 |
+| MILLER | SALES     | 1300 |
+| SMITH  | SALES     |  800 |
+| JONES  | SALES     | 2975 |
+| BLAKE  | SALES     | 2850 |
+| CLARK  | SALES     | 2450 |
+| SCOTT  | SALES     | 3000 |
+| KING   | SALES     | 5000 |
+| ADAMS  | SALES     | 1100 |
+| JAMES  | SALES     |  950 |
+| FORD   | SALES     | 3000 |
+| FORD   | TESTER    | 3000 |
+| JAMES  | TESTER    |  950 |
+| ADAMS  | TESTER    | 1100 |
+| KING   | TESTER    | 5000 |
+| SCOTT  | TESTER    | 3000 |
+| CLARK  | TESTER    | 2450 |
+| BLAKE  | TESTER    | 2850 |
+| JONES  | TESTER    | 2975 |
+| SMITH  | TESTER    |  800 |
+| MILLER | TESTER    | 1300 |
++--------+-----------+------+
+49. List the employee names, department names and hiredate for those employees who have joined in 2003 . Sort your output in the order of joining date.
+
+SELECT ENAME,DNAME,HIRE_DATE FROM EMPLOYEE2,DEPARTMENT WHERE COMM IS NULL AND YEAR( HIRE_DATE)=2003 ORDER BY HIRE_DATE ;
+
+
++-------+-----------+------------+
+| ENAME | DNAME     | HIRE_DATE  |
++-------+-----------+------------+
+| JONES | FINANCE   | 2003-04-18 |
+| JONES | SALES     | 2003-04-18 |
+| JONES | TESTER    | 2003-04-18 |
+| JONES | DEVELOPER | 2003-04-18 |
+| FORD  | FINANCE   | 2003-12-18 |
+| JAMES | FINANCE   | 2003-12-18 |
+| FORD  | SALES     | 2003-12-18 |
+| JAMES | SALES     | 2003-12-18 |
+| FORD  | TESTER    | 2003-12-18 |
+| JAMES | TESTER    | 2003-12-18 |
+| FORD  | DEVELOPER | 2003-12-18 |
+| JAMES | DEVELOPER | 2003-12-18 |
++-------+-----------+------------+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+					

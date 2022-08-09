@@ -1,0 +1,150 @@
+                                            Rdbms day2-part2
+
+
+NORMALIZATION:
+
+normalization is a way of organizing the data in the database.
+
+TYPES OF NORMALIZATION:
+
+1)1NF
+2)2NF
+3)3NF
+
+
+1NF:
+
+RULE1:THEY SHOULD BE SEPARATE COLUMNS
+
+RULE2:EACH CELL IN A ROW SHOULD HAVE A SINGLE VALUE.
+
+EXAMPLE:
+
+EMPLOYEEID	NAME	  PHONENO	SALARY
+
+  1		ALEX	  7898799717	50000
+			  9876541299			
+
+           
+  2		BARRY     9976543211	79990          
+			  8655409812	
+  
+  3		DAVID	  6547810398     89920
+                          7654356796
+--------------------------------------------------
+
+EMPLOYEEID	NAME	  PHONENO	SALARY
+
+  1		ALEX	  7898799717	50000
+
+  1		ALEX	  9876541299	50000
+
+  2		BARRY     9976543211	79990
+
+  2		BARRY     8655409812    79990
+  
+  3		DAVID	  6547810398    89920
+  
+  3		DAVID	  7654356796    89920
+
+-------------------------------------------------
+
+2NF:
+
+RULE1:THE TABLE SHOULB BE IN 1NF
+
+RULE2:THERE SHOULD NOT BE PARTIAL DEPENDENCY
+
+EXAMPLE:
+
+EMPLOYEEID    DEPARTMENTID	DLOCATION
+
+101		D1		HYDERABAD
+
+102		D2		CHENNAI
+
+103		D3		BANGALORE
+
+
+--------------------------------------------------------------------------
+
+EMPLOYEEID	DEPARTMENTID			DEPARTMENTID	DLOCATION
+
+101		D1				D1		HYDERABAD		
+
+102		D2				D2		CHENNAI		
+
+103		D3				D3		BANGALORE
+
+------------------------------------------------------------------------------
+
+3NF:
+
+RULE1:IT SHOULD BE IN 2NF
+
+RULE2:THERE SHOULD NOT BE IN TRANSITIVE DEPENDENCY
+
+
+EXAMPLE:
+
+STUDENTID	NAME	SUBJECTID	SUBJECT    LOCATION
+
+1		ALLEN	S1		DBMS	   CHENNAI
+
+2		BARRY	S2		JAVA	   HYDERABAD
+
+3		DAVID	S3		SE	   BANGALORE
+
+
+----------------------------------------------------------------------------------------------
+
+STUDENTID	NAME	SUBJECTID	LOCATION			SUBJECTID	SUBJECT
+
+1		ALLEN	S1		CHENNAI				S1		DBMS
+
+2		BARRY	S2		HYDERABAD			S2		JAVA
+
+3		DAVID	S3		BANGALORE			S3		BANGALORE
+
+--------------------------------------------------------------------------------------------------
+
+
+
+
+HAVING CLAUSE:
+
+
+The HAVING clause was added to SQL because the WHERE keyword cannot be used with aggregate functions.
+
+select deptno,max(sal) from employee2 where deptno>10 group by deptno having max(sal)>1000;
++--------+----------+
+| deptno | max(sal) |
++--------+----------+
+|     20 |     3000 |
+|     30 |     2850 |
++--------+----------+
+
+
+GROUP BY CLAUSE:
+
+TO GROUP THE DATA BASED ON SOME CONDITION.
+
+SELECT MIN(SAL) FROM EMPLOYEE2 GROUP BY DEPTNO;
+
++----------+
+| MIN(SAL) |
++----------+
+|      800 |
+|      950 |
+|     1300 |
++----------+
+
+
+
+
+		
+		
+			  	
+  
+ 
+                         		

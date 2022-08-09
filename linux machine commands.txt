@@ -1,0 +1,446 @@
+
+                                     LINUX COMMANDS(16/5/22)in virtual box
+==========================================================================================================
+
+
+//apt update
+
+
+
+//ip a
+
+
+
+//fdisk -l
+
+
+
+//fdisk /dev/sda
+
+
+
+//cat /proc/cpuinfo
+
+
+
+//cat /proc/meminfo
+
+
+
+//top
+
+
+
+//free
+===================================================
+(user creation)
+
+sudo su
+
+adduser aishwarya
+
+id aishwarya
+
+cat /etc/passwd
+
+cat /etc/shadow
+
+
+
+====================================================
+
+(SSH DEV Operations)
+
+ssh-keygen
+
+ssh-keygen -t dsa
+
+ssh-keygen -t rsa
+
+cd   /root/.ssh
+
+ls   -lrt
+
+cat  id_rsa.pub
+
+cat  id_rsa
+
+cat id_dsa.pub
+
+cat id_rsa
+
+
+
+================================================
+vmstat
+
+vmstat 5 5
+
+vmstat 2 5 
+
+//apt install htop htop
+
+//pidstat
+
+
+==========================================================================
+                                      
+
+                                    
+
+adduser iDevopsadmin 
+
+id iDevopsadmin 
+
+cat  /etc/passwd  | grep iDev 
+
+cat  /etc/shadow  | grep iDev 
+==============================
+passwd iDevopsadmin (for password reseting)
+
+chage -l  iDevopsadmin
+
+(after this we would try to login new tab using iDevopsadmin username )
+
+(new tab)
+=========================================================================================================
+CTRL+SHIFT+ TERMINAL -->  su iDevopsadmin 
+ =======================================================================================================
+//chage -M 90 admin
+
+usermod -L iDevopsadmin 
+
+cat  /etc/shadow  | grep iDev 
+===============================================================================
+
+passwd iDevopsadmin (this one also password resetting)
+
+usermod -U iDevopsadmin
+ 
+cat  /etc/shadow  | grep iDev
+===========================================================================================
+passwd  -l iDevopsadmin
+passwd  -u iDevopsadmin
+
+
+
+=======================================================================================================================================================================
+
+
+                                                            Docker,kubernetes(17/5/22) In virtual box
+
+======================================================================================================================================
+
+3  docker pull python
+    4  docker images python
+    5  docker network ls
+    6  clear
+    7  docker network ls
+    8  docker network create idevnets
+    9  docker network ls
+   10  docker network create icloudnets
+   11  docker network ls
+   12  clear
+   13  docker help
+   14  clear
+   15  minikube start
+   16  minikube status
+   17  clear
+   18  minikube start
+   19  minikube status
+   20  clear
+   21  mkdir micrsvs
+   22  cd micrsvs/
+   23  pwd
+   24  docker version
+   25  clear
+   26  kubectl version
+   27  kubectl --help
+   28  clear
+   29  kubectl get services
+   30  kubectl get pods
+   31  kubectl get namespaces
+   32  kubectl get deployments
+   33  kubectl help
+   34  clear
+   35  kubectl create deployment thbs-engineering-k8s --image=k8s.gcr.io/echoserver:1.4
+   36  kubectl create deployment ibmwaston-engineering-k8s --image=k8s.gcr.io/echoserver:1.4
+   37  kubectl get deployment
+   38  kubectl get pods
+   39  kubectl get services
+   40  kubectl create deployment microservices-engineering-k8s-17may2022 --image=k8s.gcr.io/echoserver:1.4
+   41  kubectl create deployment microservices-idevaiops-k8s-17may2022 --image=k8s.gcr.io/echoserver:1.4
+   42  clear
+   43  kubectl get services
+   44  kubectl get deployment
+   45  kubectl get pods
+   46  kubectl create idevaiops-k8s --image=k8s.gcr.io/echoserver:1.4
+   47  kubectl create deployment microservices-idevaiops-k8s-17may2022 --image=k8s.gcr.io/echoserver:1.4
+   48  kubectl create deployment microservices --image=k8s.gcr.io/echoserver:1.4
+   49  clear
+   50  kubectl get deployments
+   51  kubectl get pods
+   52  kubectl get services
+   53  kuberctl help
+   54  kubectl help
+   55  clear
+   56  kubectl get deployment
+   57  kubectl get services
+   58  kubectl expose deployment ibmwaston-engineering-k8s --type=LoadBalancer --port=8080
+   59  kubectl get services
+   60  kubectl expose deployment microservices-engineering-k8s-17may2022 --type=LoadBalancer --port=8080
+   61  kubectl expose deployment microservices-idevaiops-k8s-17may2022 --type=LoadBalancer --port=7777
+   62  clear
+   63  kubectl get services
+   64  kubectl get pods
+   65  clear
+   66  kubectl get events
+===================================================================================================================================================
+
+$ kubectl get deployments,pods,services
+NAME                                                      READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/ibmwaston-engineering-k8s                 1/1     1            1           31m
+deployment.apps/microservices                             1/1     1            1           22m
+deployment.apps/microservices-engineering-k8s-17may2022   1/1     1            1           28m
+deployment.apps/microservices-idevaiops-k8s-17may2022     1/1     1            1           27m
+deployment.apps/thbs-engineering-k8s                      1/1     1            1           32m
+ 
+NAME                                                          READY   STATUS    RESTARTS   AGE
+pod/ibmwaston-engineering-k8s-5f67f45895-649xw                1/1     Running   0          31m
+pod/microservices-5789cc6fb4-ks8n5                            1/1     Running   0          22m
+pod/microservices-engineering-k8s-17may2022-bf5889fbf-stlpt   1/1     Running   0          28m
+pod/microservices-idevaiops-k8s-17may2022-597c488b94-5xlp5    1/1     Running   0          27m
+pod/thbs-engineering-k8s-c7f765b64-d82t6                      1/1     Running   0          32m
+ 
+NAME                                              TYPE           CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
+service/ibmwaston-engineering-k8s                 LoadBalancer   10.102.24.35    <pending>     8080:31092/TCP   11m
+service/kubernetes                                ClusterIP      10.96.0.1       <none>        443/TCP          55m
+service/microservices-engineering-k8s-17may2022   LoadBalancer   10.106.114.19   <pending>     8080:32193/TCP   10m
+service/microservices-idevaiops-k8s-17may2022     LoadBalancer   10.101.246.19   <pending>     7777:32439/TCP   9m5s
+$ 
+===============================================================================================================================================
+
+72  kubectl api-resources
+   73  kubectl get events
+   74  kubectl get pods
+   75  kubectl get services
+   76  kubectl get pods
+   77  kubectl get deployments
+   78  kubectl get deployments,pods,deployments
+   79  kubectl get deployments,pods,services
+   80  clear
+   81  top
+   82  kill -l
+   83  uptime
+   84  free
+   85  ps
+   86  ps -ef
+   87  lsof
+   88  ipcs
+   89  id
+   90  cat /etc/passwd
+   91  cat /etc/shadow
+   92  cat /etc/passwd
+=======================================================================================================================================================
+
+open virtual box--> in ubuntu-->open-.right click -> open terminal
+
+cd rootserver/
+service --status-all
+service sysstat status
+pidstat
+whatis sar
+sar -b
+sar -b 5
+sar -B 1 5
+sar -d 
+sar -d 1
+sar -D 1 5
+whatis iostat
+iostat
+iptraf-ng(it give udps)-->right click
+(we select interface and see)
+-->ctrl+x
+cat /etc/services ...
+docker version
+================================================================
+sudo su
+service   uuidd status
+service uuidd start
+service uuidd status
+service --status-all
+systemctl  --no-pager
+ip a
+fdisk  -l
+whatis  dd
+lsblk
+cd  /var/log
+ls
+cat  /etc/fstab
+rpcinfo
+id
+cat  /etc/passwd
+cat  /etc/shadow
+ssh-keygen -t dsa
+ssh-keygen -t rsa
+vmstat  11 11
+vmstat
+free
+top
+fdisk  /dev/sda
+============================================================================================
+
+
+
+[2:58 AM] Aman K. (Guest)
+4  uname
+
+    5  minikube status
+
+    6  kubectl get deployments
+
+    7  kubectl get pods
+
+    8  kubectl get services
+
+    9  kubectl create deployment nasaengineering-17may22 --image=k8s.gcr.io/echoserver:1.4
+
+   10  kubectl get deployment
+
+   11  kubectl create deployment thbsengineeringy --image=k8s.gcr.io/echoserver:1.4
+
+   12  kubectl get deployment
+
+   13  kubectl get services
+
+   14  kubectl get pods
+
+   15  kubectl create deployment apimodelsdesigns --image=k8s.gcr.io/echoserver:1.4
+
+   16  kubectl create deployment apidesigns_devpipelines --image=k8s.gcr.io/echoserver:1.4
+
+   17  kubectl create deployment apidesigns-devpipelines --image=k8s.gcr.io/echoserver:1.4
+
+   18  kubectl create deployment apidesigns_prodpipelines --image=k8s.gcr.io/echoserver:1.4
+
+   19  kubectl create deployment apidesigns-prodpipelines --image=k8s.gcr.io/echoserver:1.4
+
+   20  kubectl get deployments
+
+   21  kubectl create deployment apidesigns-qa-pipelines --image=k8s.gcr.io/echoserver:1.4
+
+   22  kubectl create deployment apidesigns-security-pipelines --image=k8s.gcr.io/echoserver:1.4
+
+   23  kubectl get deployments
+
+   24  kubectl get pods
+
+   25  kubectl get deployments
+
+   26  kubectl version
+
+   27  kubectl get namespaces
+
+   28  kubectl api-resources
+
+   29  kubectl get services, pods
+
+   30  kubectl get services pods
+
+   31  kubectl get services,pods
+
+   32  clear
+
+   33  kubectlget deployment
+
+   34  kubectl get deployment
+
+   35  kubectl expose deployment api-designs --type=Loadbalancer --port=7777
+
+   36  kubectl expose deployment apidesigns-devpipelines --type=Loadbalancer --port=7777
+
+   37  kubectl expose deployment apidesigns-devpipelines --type=LoadBalancer --port=7777
+
+   38  kubectl get services
+
+   39  clear
+
+   40  kubectl get services
+
+   41  kubectl expose deployment apidesigns-prodpipelines --type=LoadBalancer --port=7777
+
+   42  kubectl get services
+
+   43  kubectl expose deployment apidesigns-qa-pipelines --type=LoadBalancer --port=7755
+
+   44  kubectl get services
+
+   45  minikube addons list
+
+   46  minikube addons enable pod-security-policy
+
+   47  minikube addons list
+
+   48  minikube addons enable helm-tiller
+
+   49  minikube addons list
+
+   50  minikube addons list istio
+
+   51  minikube addons enable istio
+
+   52  minikube addons list
+
+   53  clear]
+
+   54  clear
+
+   55  kubectl help
+
+   56  kubectl api-versions
+
+   57  kubectl api-resources
+
+   58  kubectl help
+
+   59  kubectl get pods
+
+   60  kubectl get events
+
+   61  kubectl get pod,svc -n kube-system
+
+   62  clear
+
+   63  uname
+
+   64  kubectl get pods
+
+   65  kubectl get services
+
+   66  kubectl expose deployment apidesigns-security-pipelines --type=LoaBalancer --port=9999
+
+   67  kubectl expose deployment apidesigns-security-pipelines --type=LoadBalancer --port=9999
+
+   68  clear
+
+   69  kubectl get services
+
+   70  minikube status
+
+   71  kubectl get pods
+
+   72  kubectl get namespaces
+
+============================================================================================================================================================
+
+
+
+
+
+
+
+
+
+
+
+

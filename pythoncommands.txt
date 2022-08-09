@@ -1,0 +1,603 @@
+                                                                                       4/5/2022(plots)
+=======================================================================================================================================================================
+
+(in cmd)
+-----------------------
+-->python
+--->exit()
+-->pip install requests
+
+(In python 3.10 cmd )python shell
+----------------------------------------------------------
+import requests
+help(requests)
+>>> r=requests.get('https://www.python.org')
+>>> r
+<Response [200]>
+>>> r=requests.get('https://www.google.com')
+>>> r
+<Response [200]>
+>>> r=requests.get('https://www.microsoftedge.com')
+>>> r
+<Response [200]>
+
+ >>> print(r.headers["date"])
+Wed, 04 May 2022 04:49:32 GMT
+--------------------------------------------------
+installations:(in cmd)
+
+1)pip install matplotlib
+
+2)pip install seaborn
+-------------------------------------------------------
+(python shell)
+--------------------------------------------------
+
+
+-->import matplotlib
+help(matplotlib)
+
+-->import seaborn
+help(seaborn)
+
+
+
+
+>>> import seaborn as sns
+>>> penguins = sns.load_dataset('penguins')
+>>> penguins
+    species     island  bill_length_mm  bill_depth_mm  flipper_length_mm  body_mass_g     sex
+0    Adelie  Torgersen            39.1           18.7              181.0       3750.0    Male
+1    Adelie  Torgersen            39.5           17.4              186.0       3800.0  Female
+2    Adelie  Torgersen            40.3           18.0              195.0       3250.0  Female
+3    Adelie  Torgersen             NaN            NaN                NaN          NaN     NaN
+4    Adelie  Torgersen            36.7           19.3              193.0       3450.0  Female
+..      ...        ...             ...            ...                ...          ...     ...
+339  Gentoo     Biscoe             NaN            NaN                NaN          NaN     NaN
+340  Gentoo     Biscoe            46.8           14.3              215.0       4850.0  Female
+341  Gentoo     Biscoe            50.4           15.7              222.0       5750.0    Male
+342  Gentoo     Biscoe            45.2           14.8              212.0       5200.0  Female
+343  Gentoo     Biscoe            49.9           16.1              213.0       5400.0    Male
+
+[344 rows x 7 columns]
+
+
+
+------------------------------------------------------------------
+
+plots:
+
+boxplot:
+--------------------
+>>> import matplotlib
+>>> from matplotlib import pyplot as plt
+>>> sns.boxplot(data=penguins, x="flipper_length_mm", y = "bill_depth_mm", hue ="species")
+<AxesSubplot:xlabel='flipper_length_mm', ylabel='bill_depth_mm'>
+>>> plt.show()
+
+lineplot:
+-----------------------
+>>> import matplotli
+>>> from matplotlib import pyplot as plt
+>>> sns.lineplot(data=penguins, x="flipper_length_mm", y = "bill_depth_mm", hue ="species")
+<AxesSubplot:xlabel='flipper_length_mm', ylabel='bill_depth_mm'>
+>>> plt.show()
+
+lmplot:
+------------------------------------
+>> import matplotlib
+>>> from matplotlib import pyplot as plt
+>>> sns.lmplot(data=penguins, x="flipper_length_mm", y = "bill_depth_mm", hue ="species")
+<seaborn.axisgrid.FacetGrid object at 0x000001EA03E2D960>
+>>> plt.show()
+
+histplot:
+--------------------------------------------
+ sns.histplot(data=penguins, x="flipper_length_mm", y = "bill_depth_mm", hue ="species")
+<AxesSubplot:xlabel='flipper_length_mm', ylabel='bill_depth_mm'>
+>>> plt.show()
+
+------------------------------------
+
+>>> g = sns.PairGrid(penguins, hue="species")
+>>> g.map_lower(sns.kdeplot)
+<seaborn.axisgrid.PairGrid object at 0x000001EA2910ADA0>
+plt.show()
+
+--------------------------
+>>> g = sns.PairGrid(penguins, hue="species")
+>>> g.map_lower(sns.kdeplot)
+<seaborn.axisgrid.PairGrid object at 0x000001EA2910ADA0>
+>>> g = sns.PairGrid(penguins, hue="species")
+>>> g.map_lower(sns.kdeplot)
+<seaborn.axisgrid.PairGrid object at 0x000001EA2A807880>
+>>> g.map_diag(sns.scatterplot, marker ="+")
+<seaborn.axisgrid.PairGrid object at 0x000001EA2A807880>
+>>> g.add_legend()
+<seaborn.axisgrid.PairGrid object at 0x000001EA2A807880>
+>>> plt.show()
+--------------------------------------------
+>>> g = sns.PairGrid(penguins, hue="species")
+>>> g.map_lower(sns.kdeplot)
+<seaborn.axisgrid.PairGrid object at 0x000001EA29182C20>
+>>> g.map_diag(sns.histplot)
+<seaborn.axisgrid.PairGrid object at 0x000001EA29182C20>
+>>> g.add_legend()
+<seaborn.axisgrid.PairGrid object at 0x000001EA29182C20>
+>>> g.map_diag(sns.scatterplot, marker ="*")
+<seaborn.axisgrid.PairGrid object at 0x000001EA29182C20>
+>>> plt.show()
+
+---------------------------------------------
+
+>>> import matplotlib
+>>> from matplotlib import pyplot as plt
+>>> sns.relplot(data=penguins, x="bill_depth_mm", y = "bill_length_mm", hue ="species")
+<seaborn.axisgrid.FacetGrid object at 0x00000148E883D810>
+>>> plt.show()
+
+--------------------------------------------------
+import seaborn as sns
+data = sns.load_dataset("iris")
+sns.histplot(data=data, x="petal_length", y = "petal_width")
+plt.show()
+---------------------------------
+>>> sns.histplot(data=data, x="petal_length", y = "petal_width",hue ="species")
+<AxesSubplot:xlabel='petal_length', ylabel='petal_width'>
+>>> plt.show()
+
+----------------------------------------------
+
+>>> sns.histplot(data=data, x="sepal_length", y = "sepal_width")
+<AxesSubplot:xlabel='sepal_length', ylabel='sepal_width'>
+>>> plt.show()
+
+-------------------------------------------------------
+>>> sns.histplot(data=data, x="sepal_length", y = "sepal_width",hue ="species")
+<AxesSubplot:xlabel='sepal_length', ylabel='sepal_width'>
+>>> plt.show()
+
+bar plot
+-----------------------------------------------------------------
+>>> sns.barplot(data=data, x="sepal_length", y = "sepal_width",hue ="species")
+<AxesSubplot:xlabel='sepal_length', ylabel='sepal_width'>
+>>> plt.show()
+
+--------------------------
+data = sns.load_dataset("fmri")
+>>> data
+
+-----------------------------------------
+
+sns.barplot(data=data, x="timepoint", y = "signal",hue="subject")
+<AxesSubplot:xlabel='timepoint', ylabel='signal'>
+>>> plt.show()
+-------------------------
+>>> sns.barplot(data=data, x="timepoint", y = "signal",hue="event")
+<AxesSubplot:xlabel='timepoint', ylabel='signal'>
+>>> plt.show()
+-------------------------------------------
+>>> sns.barplot(data=data, x="timepoint", y = "signal",hue="region")
+<AxesSubplot:xlabel='timepoint', ylabel='signal'>
+>>> plt.show()
+--------------------------------
+>>> sns.lineplot(data=data, x="timepoint", y = "signal",hue="subject")
+<AxesSubplot:xlabel='timepoint', ylabel='signal'>
+plt.show()
+---------------------------------------
+sns.boxplot(data=data, x="timepoint", y = "signal",hue="event")
+<AxesSubplot:xlabel='timepoint', ylabel='signal'>
+>>> plt.show()
+-------------------------------
+>>> sns.lineplot(data=data, x="timepoint", y = "signal",hue="region")
+<AxesSubplot:xlabel='timepoint', ylabel='signal'>
+>>> plt.show()
+---------------------------------------
+>>> sns.relplot(data=data, x="timepoint", y = "signal",hue="event")
+<seaborn.axisgrid.FacetGrid object at 0x000001B7046BB2E0>
+>>> plt.show()
+---------------------------------------------
+>> sns.lmplot(data=data, x="timepoint", y = "signal",hue="region")
+<seaborn.axisgrid.FacetGrid object at 0x000001B704563A00>
+>>> plt.show()
+----------------------------------------------------
+>>> sns.displot(data=data, x="timepoint", y = "signal",hue="region")
+<seaborn.axisgrid.FacetGrid object at 0x000001B7019105E0>
+>>> plt.show()
+----------------------------------------
+data = sns.load_dataset("dots")
+>>> data
+-------------------------------------
+>>> sns.displot(data=data, x="time", y = "firing_rate",hue="choice")
+<seaborn.axisgrid.FacetGrid object at 0x000001B70489D030>
+>>> plt.show()
+--------------------------------
+>>> sns.boxplot(data=data, x="time", y = "firing_rate",hue="choice")
+<AxesSubplot:xlabel='time', ylabel='firing_rate'>
+>>> plt.show()
+-----------------------------------------------
+>>> sns.lineplot(data=data, x="time", y = "firing_rate",hue="choice")
+<AxesSubplot:xlabel='time', ylabel='firing_rate'>
+>>> plt.show()
+-----------------------------------------
+>>> sns.barplot(data=data, x="time", y = "firing_rate",hue="choice")
+<AxesSubplot:xlabel='time', ylabel='firing_rate'>
+>>> plt.show()
+-------------------------------------------
+>>> sns.lmplot(data=data, x="time", y = "firing_rate",hue="choice")
+<seaborn.axisgrid.FacetGrid object at 0x000001B704880CD0>
+>>> plt.show()
+-------------------------------------------------------------
+>>> sns.relplot(data=data, x="time", y = "firing_rate",hue="choice")
+<seaborn.axisgrid.FacetGrid object at 0x000001B705EB0AC0>
+>>> plt.show()
+-------------------------------------
+
+>>> data = sns.load_dataset("tips")
+>>> data
+----------------------------------------------
+>>> sns.relplot(data=data, x="total_bill", y = "tip",hue="smoker")
+<seaborn.axisgrid.FacetGrid object at 0x000001B70194BD00>
+>>> plt.show()
+----------------------------------------------------
+>>> sns.violinplot(data=data, x="total_bill", y = "tip",hue="smoker")
+<AxesSubplot:xlabel='total_bill', ylabel='tip'>
+>>> plt.show()
+-------------------------------
+>>> sns.relplot(data=data, x="total_bill", y = "tip",hue="smoker",style="smoker")
+<seaborn.axisgrid.FacetGrid object at 0x000001B7045D1D80>
+>>> plt.show()
+------------------------------------------------
+sns.catplot(data=data, x="total_bill", y = "tip",hue="smoker")
+plt.show()
+sns.jointplot(data=data, x="total_bill", y = "tip",hue="smoker")
+plt.show()
+-----------------------------------
+>>> sns.color_palette()
+[(0.12156862745098039, 0.4666666666666667, 0.7058823529411765), (1.0, 0.4980392156862745, 0.054901960784313725), (0.17254901960784313, 0.6274509803921569, 0.17254901960784313), (0.8392156862745098, 0.15294117647058825, 0.1568627450980392), (0.5803921568627451, 0.403921568627451, 0.7411764705882353), (0.5490196078431373, 0.33725490196078434, 0.29411764705882354), (0.8901960784313725, 0.4666666666666667, 0.7607843137254902), (0.4980392156862745, 0.4980392156862745, 0.4980392156862745), (0.7372549019607844, 0.7411764705882353, 0.13333333333333333), (0.09019607843137255, 0.7450980392156863, 0.8117647058823529)]
+----------------------------
+>>> sns.color_palette("Paired")
+[(0.6509803921568628, 0.807843137254902, 0.8901960784313725), (0.12156862745098039, 0.47058823529411764, 0.7058823529411765), (0.6980392156862745, 0.8745098039215686, 0.5411764705882353), (0.2, 0.6274509803921569, 0.17254901960784313), (0.984313725490196, 0.6039215686274509, 0.6), (0.8901960784313725, 0.10196078431372549, 0.10980392156862745), (0.9921568627450981, 0.7490196078431373, 0.43529411764705883), (1.0, 0.4980392156862745, 0.0), (0.792156862745098, 0.6980392156862745, 0.8392156862745098), (0.41568627450980394, 0.23921568627450981, 0.6039215686274509), (1.0, 1.0, 0.6), (0.6941176470588235, 0.34901960784313724, 0.1568627450980392)]
+----------------------------------------
+sns.swarmplot(data=data, x="total_bill", y = "tip",hue="smoker")
+plt.show()
+-------------------------
+>>> sns.rugplot(data=data, x="total_bill", y = "tip",hue="smoker")
+<AxesSubplot:xlabel='total_bill', ylabel='tip'>
+>>> plt.show()
+--------------------------------------------
+>>> sns.kdeplot(data=data, x="total_bill", y = "tip",hue="smoker")
+<AxesSubplot:xlabel='total_bill', ylabel='tip'>
+>>> plt.show()
+-----------------------------------------
+
+
+=======================================================================================================================================================================
+                                                                                5/5/2022(webapps)
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+In cmd
+-----------------------------------------------------
+>pip install flask
+
+
+IN python shell
+-----------------------------------------
+>>> import flask
+>>> help(flask)
+-----------------------------
+ >>>import flask
+>>> from flask import Flask
+>>> app=Flask(__name__)
+>>> @app.route("/")
+... def hello():
+...    return "Hello to Application and their API's"
+...
+>>> if __name__ =="__main__":
+...   app.run()
+...
+
+output:
+-------------------------------------------------------
+ * Serving Flask app '__main__' (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: off
+ * Running on http://127.0.0.1:5000 (Press CTRL+C to quit)
+-------------------------------------------------------
+--> copy this 127.0.0.1:5000 address and paste in browser  it will show the output like
+
+OUTPUT:
+
+Hello to Application and their API's
+------------------------------------------------------
+>>> from flask import Flask
+>>> app=Flask(__name__)
+>>> @app.route("/apiv3")
+... def hello():
+...    return "Hello to Application and their API's"
+...
+>>> if __name__ =="__main__":
+...   app.run()
+...
+ * Serving Flask app '__main__' (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: off
+ * Running on http://127.0.0.1:5000 (Press CTRL+C to quit)
+------------------------------
+
+
+copy this 127.0.0.1:5000/apiv3 and paste in browser then we will get output
+
+output:
+
+Hello to Application and their API's
+-----------------------------------------------------
+>>> from flask import Flask
+>>> app=Flask(__name__)
+>>> @app.route("/apiv3")
+... def appfunc():
+...   return "Hello to Application and functions"
+...
+>>> if __name__ =="__main__":
+...   app.run()
+...
+ * Serving Flask app '__main__' (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: off
+ * Running on http://127.0.0.1:5000 (Press CTRL+C to quit)
+------------------------------------------------------
+
+output:
+
+Hello to Application and functions
+
+-------------------------------------------------------
+
+ from flask import Flask
+>>> app=Flask(__name__)
+>>> @app.route("/class/")
+... def appfunc():
+...   return "Hello to Application and classes"
+...
+>>> if __name__ =="__main__":
+...   app.run()
+...
+ * Serving Flask app '__main__' (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: off
+ * Running on http://127.0.0.1:5000 (Press CTRL+C to quit)
+----------------------------------
+output:
+Hello to Application and classes
+
+-----------------------------------------
+>>> from flask import Flask
+>>> app=Flask(__name__)
+>>> @app.route("/new/class/")
+... def appfunc():
+...   return "Hello to Application and classes"
+...
+>>> if __name__ =="__main__":
+...   app.run()
+...
+ * Serving Flask app '__main__' (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: off
+ * Running on http://127.0.0.1:5000 (Press CTRL+C to quit)
+
+-----------------------------------------------
+output:
+
+Hello to Application and classes
+-------------------------------------------
+       (In cmd) (Django)
+================================
+
+pip install django
+
+mkdir apiproj
+
+cd apiproj
+
+python -m venv venv
+
+dir
+
+cd venv
+
+cd scripts
+
+activate
+
+cd ..
+
+cd ..
+
+pip install django
+
+django-admin startproject Apiops
+
+dir
+
+cd Apiops
+
+dir
+
+type manage.py
+
+cls
+
+django-admin startapp Apiopsapp
+
+
+dir
+
+python manage.py migrate
+------------------------------------------------
+Django commands for running in cmd:
+
+python manage.py runserver
+
+copy ip address   http://127.0.0.1:8000/
+and paste in browser
+ it would open django installation successfully
+
+
+python manage.py createsuperuser
+appadmin
+
+django adminstrator passwords
+------------------------------
+username:appadmin
+Email address:dhanalakshmikonduru12@gmail.com
+password:Dhana@99
+--------------------------------
+username:dhanalakshmi
+Email address: kondurudhanalakshmi99@gmail.com
+password:1234
+------------------------------------
+
+--------------------------------------
+python manage.py runserver
+
+copy  127.0.0.1:8000/ this and add/admin  ex:/127.0.0.1:8000/admin and paste in browser it would open django dashboard
+--------------------------
+python manage.py runserver 7777
+
+copy 127.0.0.1:7777 this and paste in browser
+
+we can also use this port number
+
+127.0.0.1:7777/admin-it open django adminstrator account
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------=======================================================================================================================================================================
+
+                                6/5/22
+
+-----------------------------------------------------------------------------------------------
+
+(IN pythonshell)
+----------------------------------
+import flask
+>>> from flask import Flask
+>>> app=Flask(__name__)
+>>> @app.route("/apiv3/dhana/")
+... def hello():
+...   return "Hello to Application and their API's"
+...
+>>> if __name__ =="__main__":
+...  app.run()
+...
+ * Serving Flask app '__main__' (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: off
+ * Running on http://127.0.0.1:5000 (Press CTRL+C to quit
+-------------------------------------------------
+output:
+
+copy 127.0.0.1:5000 this and add /apiv3/dhana/ like 127.0.0.1:5000/apiv3/dhana/ and paste in browser it will show output like
+
+Hello to Application and their API's
+--------------------------------------------
+
+For django running:(in cmd)
+
+====================
+
+Microsoft Windows [Version 10.0.19043.1645]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\dhanalakshmi_konduru>cd apiproj
+
+C:\Users\dhanalakshmi_konduru\apiproj>cd venv
+
+C:\Users\dhanalakshmi_konduru\apiproj\venv>cd scripts
+
+C:\Users\dhanalakshmi_konduru\apiproj\venv\Scripts>activate
+
+(venv) C:\Users\dhanalakshmi_konduru\apiproj\venv\Scripts>cd ..
+
+(venv) C:\Users\dhanalakshmi_konduru\apiproj\venv>cd ..
+
+(venv) C:\Users\dhanalakshmi_konduru\apiproj>cd Apiops
+
+(venv) C:\Users\dhanalakshmi_konduru\apiproj\Apiops>type manage.py
+#!/usr/bin/env python
+"""Django's command-line utility for administrative tasks."""
+import os
+import sys
+
+
+def main():
+    """Run administrative tasks."""
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Apiops.settings')
+    try:
+        from django.core.management import execute_from_command_line
+    except ImportError as exc:
+        raise ImportError(
+            "Couldn't import Django. Are you sure it's installed and "
+            "available on your PYTHONPATH environment variable? Did you "
+            "forget to activate a virtual environment?"
+        ) from exc
+    execute_from_command_line(sys.argv)
+
+
+if __name__ == '__main__':
+    main()
+
+(venv) C:\Users\dhanalakshmi_konduru\apiproj\Apiops>python manage.py runserver
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified no issues (0 silenced).
+May 05, 2022 - 21:47:34
+Django version 4.0.4, using settings 'Apiops.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CTRL-BREAK.
+[05/May/2022 21:48:01] "GET /admin/ HTTP/1.1" 200 6043
+[05/May/2022 21:48:05] "GET / HTTP/1.1" 200 10697
+[05/May/2022 21:48:13] "GET /admin/ HTTP/1.1" 200 6043
+===================================================
+                    IN CMD(jenkins)
+==============================================
+
+->cd ..
+->cd ..
+->in c floder lo undali
+->cd jk
+->dir
+->cd floderjk
+->dir
+->cls
+->java -jar jenkins.war
+
+(in browser) type localhost:8080
+it will open jenkins
+============================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
